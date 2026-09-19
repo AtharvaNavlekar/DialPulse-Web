@@ -1,0 +1,6 @@
+{
+  "name": "DialPulse CRM",
+  "description": "DialPulse is a multi-tenant CRM SaaS built to help organizations enforce communication policies, manage leads, and power intelligent workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
