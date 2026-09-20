@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Users, 
   Users2, 
@@ -483,8 +483,33 @@ function CentralCustomerMockup() {
   );
 }
 
-export function SolutionExplorer() {
-  const [activeSolutionId, setActiveSolutionId] = useState('leads');
+const slugToIdMap: Record<string, string> = {
+  'lead-operations': 'leads',
+  'follow-up-control': 'followup',
+  'customer-communication': 'omnichannel',
+  'sales-team-operations': 'teams',
+  'performance-visibility': 'analytics',
+  'customer-operations': 'central',
+  'communication-compliance': 'compliance',
+  'ai-assisted-work': 'ai',
+};
+
+export function SolutionExplorer({ selectedSlug }: { selectedSlug?: string }) {
+  const initialId = (selectedSlug && slugToIdMap[selectedSlug]) || 'leads';
+  const [activeSolutionId, setActiveSolutionId] = useState(initialId);
+
+  // Sync if selectedSlug changes via URL navigation
+  useEffect(() => {
+    if (selectedSlug && slugToIdMap[selectedSlug]) {
+      setActiveSolutionId(slugToIdMap[selectedSlug]);
+      // Scroll to explorer section gently
+      const el = document.getElementById('solution-explorer');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [selectedSlug]);
+
   const currentSolution = solutionsData.find(s => s.id === activeSolutionId) || solutionsData[0];
 
   const renderMockup = (type: SolutionItem['mockupType']) => {

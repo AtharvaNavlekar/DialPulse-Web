@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { ArrowRight, CheckCircle2, Shield, Sparkles, Layers, PhoneCall, Calendar, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { SolutionHeroVisual } from '@/components/solutions/SolutionHeroVisual';
 import { SolutionExplorer } from '@/components/solutions/SolutionExplorer';
 import { SolutionsWorkflowVisual } from '@/components/solutions/SolutionsWorkflowVisual';
@@ -12,10 +12,14 @@ import { SolutionsSecurity } from '@/components/solutions/SolutionsSecurity';
 import { SolutionsFAQ } from '@/components/solutions/SolutionsFAQ';
 
 export default function Solutions() {
+  const { slug } = useParams<{ slug?: string }>();
+
   useEffect(() => {
     document.title = 'Solutions & Operational Workflows | DialPulse CRM';
-    window.scrollTo(0, 0);
-  }, []);
+    if (!slug) {
+      window.scrollTo(0, 0);
+    }
+  }, [slug]);
 
   return (
     <div className="w-full bg-[#F8FAFC] min-h-screen text-slate-900 selection:bg-[#00695C] selection:text-white pb-20">
@@ -87,7 +91,7 @@ export default function Solutions() {
         
         {/* 1. Solution Explorer: 8 Problem Categories */}
         <section>
-          <SolutionExplorer />
+          <SolutionExplorer selectedSlug={slug} />
         </section>
 
         {/* 2. Operational Lifecycle Flow */}

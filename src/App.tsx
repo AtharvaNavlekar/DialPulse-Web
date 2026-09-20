@@ -19,6 +19,8 @@ import FAQ from '@/pages/FAQ';
 import About from '@/pages/About';
 import Resources from '@/pages/Resources';
 import Features from '@/pages/Features';
+import LeadManagementFeature from '@/pages/LeadManagementFeature';
+import ComingSoonPage from '@/pages/ComingSoonPage';
 import NotFound from '@/pages/NotFound';
 
 export default function App() {
@@ -30,8 +32,10 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="product" element={<Product />} />
           <Route path="features" element={<Features />} />
+          <Route path="features/leads" element={<LeadManagementFeature />} />
           <Route path="features/:id" element={<FeatureDetail />} />
           <Route path="solutions" element={<Solutions />} />
+          <Route path="solutions/:slug" element={<Solutions />} />
           <Route path="resources" element={<Resources />} />
           <Route path="security" element={<Security />} />
           <Route path="pricing" element={<Pricing />} />
@@ -40,6 +44,11 @@ export default function App() {
           <Route path="privacy" element={<Privacy />} />
           <Route path="terms" element={<Terms />} />
           <Route path="faq" element={<FAQ />} />
+          <Route path="blog" element={<ComingSoonPage />} />
+          <Route path="guides" element={<ComingSoonPage />} />
+          <Route path="case-studies" element={<ComingSoonPage />} />
+          <Route path="compare" element={<ComingSoonPage />} />
+          <Route path="careers" element={<ComingSoonPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

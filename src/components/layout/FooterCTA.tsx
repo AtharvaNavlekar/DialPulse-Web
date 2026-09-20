@@ -1,35 +1,59 @@
-import { Button } from '@/components/ui/Button';
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Sparkles, Calendar } from 'lucide-react';
+import { footerNavigation } from '@/config/navigation';
 
 export function FooterCTA() {
+  const { ctaPanel } = footerNavigation;
+
   return (
-    <div className="w-full bg-[#00695C] relative overflow-hidden py-24 md:py-32">
-      {/* Background visual texture */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(128,213,196,0.3),transparent_60%)] -translate-y-1/3 translate-x-1/3" />
-        <div className="absolute bottom-0 left-10 w-[400px] h-[400px] border-[1px] border-[#80D5C4]/30 rounded-full -translate-x-1/2 translate-y-1/2" />
+    <div className="w-full bg-[#004D40] text-white relative overflow-hidden py-20 md:py-24 border-b border-teal-900/60">
+      {/* Background Architectural Geometry */}
+      <div className="absolute inset-0 pointer-events-none opacity-25">
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#80D5C4]/20 blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#00695C] blur-2xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80D5C4_1px,transparent_1px),linear-gradient(to_bottom,#80D5C4_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-10" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 mb-8 backdrop-blur-md">
-          <div className="w-2 h-2 rounded-full bg-teal-200 animate-pulse"></div>
-          <span className="text-teal-100 text-xs font-mono font-bold uppercase tracking-widest">Enterprise Ready</span>
-        </div>
-        
-        <h2 className="text-5xl md:text-6xl lg:text-[80px] font-display font-extrabold text-white mb-8 leading-[1.05] tracking-tight max-w-4xl">
-          Bring your customer workflow together.
-        </h2>
-        
-        <p className="text-xl md:text-2xl text-[#CCE8E1] max-w-2xl mb-12 leading-relaxed">
-          Unify lead management, omnichannel messaging, and compliance inside a single, high-performance operating layer.
-        </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[#80D5C4] text-xs font-mono font-semibold uppercase tracking-wider backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>OPERATIONAL ARCHITECTURE</span>
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
-          <a href="https://app.dialpulse.com/signup" className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-white text-[#00695C] font-bold text-lg hover:bg-[#F2F5F2] hover:scale-[1.02] transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
-            Get Started
-          </a>
-          <a href="/contact" className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-transparent border border-[#80D5C4]/40 text-white font-bold text-lg hover:bg-[#80D5C4]/10 transition-all">
-            Request a Demo
-          </a>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.1]">
+            {ctaPanel.headline}
+          </h2>
+
+          <p className="text-base sm:text-lg md:text-xl text-teal-100/90 leading-relaxed max-w-2xl mx-auto">
+            {ctaPanel.supportingText}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Link
+              to={ctaPanel.primaryButton.href}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl bg-white text-[#004D40] font-bold text-sm hover:bg-teal-50 transition-all shadow-sm active:scale-[0.98]"
+            >
+              <span>{ctaPanel.primaryButton.label}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            <Link
+              to={ctaPanel.secondaryButton.href}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl bg-transparent border border-[#80D5C4]/50 text-white font-semibold text-sm hover:bg-white/10 transition-all active:scale-[0.98]"
+            >
+              <Calendar className="w-4 h-4 text-[#80D5C4]" />
+              <span>{ctaPanel.secondaryButton.label}</span>
+            </Link>
+          </div>
+
         </div>
       </div>
     </div>
