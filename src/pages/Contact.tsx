@@ -58,8 +58,8 @@ export default function Contact() {
                     <ShieldCheck className="w-6 h-6 text-on-surface" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-on-surface mb-2">Security Audits</h3>
-                    <p className="text-on-surface-variant leading-relaxed">Request our SOC 2 Type II report and comprehensive tenant isolation whitepaper.</p>
+                    <h3 className="text-xl font-bold text-on-surface mb-2">Security Architecture</h3>
+                    <p className="text-on-surface-variant leading-relaxed">Request architectural specifications, tenant isolation whitepapers, and technical data flow documentation.</p>
                   </div>
                 </div>
               </div>

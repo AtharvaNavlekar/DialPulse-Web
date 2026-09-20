@@ -8,17 +8,19 @@ export interface FloatingNavProps {
   children: React.ReactNode;
   className?: string;
   dropdown?: React.ReactNode;
+  isMenuOpen?: boolean;
 }
 
 /**
  * Aceternity FloatingNav foundation for DialPulse.
  * Fixed in the viewport with no hide-on-scroll behavior.
- * Provides a sleek floating capsule for the navbar, with separate floating dropdown container.
+ * Provides a sleek floating capsule for the navbar, coordinating surface elevation with attached dropdowns.
  */
 export const FloatingNav = ({
   children,
   className,
   dropdown,
+  isMenuOpen = false,
 }: FloatingNavProps) => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,19 +39,19 @@ export const FloatingNav = ({
         {/* Floating Navbar Pill */}
         <div
           className={cn(
-            "w-full rounded-[22px] transition-[background-color,border-color,box-shadow] duration-200 ease-out",
+            "w-full rounded-2xl lg:rounded-[20px] transition-[background-color,border-color,box-shadow] duration-200 ease-out",
             "backdrop-blur-xl border",
-            // DialPulse Palette: #F8FAF8 (surface), #00695C (primary teal), #191C1B (text)
-            scrolled
-              ? "bg-[#F8FAF8]/95 border-slate-300/90 shadow-[0_16px_40px_-8px_rgba(15,23,42,0.12),0_4px_12px_-2px_rgba(0,105,92,0.06)]"
-              : "bg-[#F8FAF8]/90 border-slate-200/90 shadow-[0_10px_30px_-6px_rgba(15,23,42,0.08),0_1px_3px_rgba(0,0,0,0.04)]",
+            // DialPulse Palette: White / #F8FAF9 surface with subtle restrained shadows
+            scrolled || isMenuOpen
+              ? "bg-white/95 border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.08),0_2px_8px_rgba(0,0,0,0.03)]"
+              : "bg-white/85 border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.05),0_1px_2px_rgba(0,0,0,0.02)]",
             className
           )}
         >
           {children}
         </div>
 
-        {/* Floating Dropdown / Mobile Menu */}
+        {/* Unified Floating Dropdown / Mobile Menu */}
         {dropdown}
       </div>
     </header>

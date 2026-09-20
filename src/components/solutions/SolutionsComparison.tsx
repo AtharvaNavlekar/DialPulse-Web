@@ -20,7 +20,7 @@ const comparisonRows: ComparisonRow[] = [
   },
   {
     area: 'Follow-Up Discipline',
-    before: 'Callbacks rely on memory or paper sticky notes; over 60% of interested leads drop off because reps forget to follow up.',
+    before: 'Callbacks rely on memory or scattered notes; high volumes of interested leads stall or drop off when reps lack automated reminders.',
     withDialpulse: 'Mandatory call disposition logging and automated follow-up reminder alerts directly in the agent’s softphone drawer.'
   },
   {
@@ -45,7 +45,7 @@ const comparisonRows: ComparisonRow[] = [
   },
   {
     area: 'Post-Call Documentation',
-    before: 'Reps spend 30% of their workday typing manual summaries, leading to hasty or missing notes on key objections and next steps.',
+    before: 'Reps spend substantial time each day typing manual summaries, leading to hasty or missing notes on key objections and next steps.',
     withDialpulse: 'Tenant-isolated AI automatically transcribes calls and extracts structured bullet points within your private security boundary.'
   }
 ];

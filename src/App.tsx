@@ -9,6 +9,7 @@ import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import Home from '@/pages/Home';
 import Product from '@/pages/Product';
 import Solutions from '@/pages/Solutions';
+import SolutionDetail from '@/pages/SolutionDetail';
 import FeatureDetail from '@/pages/FeatureDetail';
 import Security from '@/pages/Security';
 import Pricing from '@/pages/Pricing';
@@ -35,7 +36,7 @@ export default function App() {
           <Route path="features/leads" element={<LeadManagementFeature />} />
           <Route path="features/:id" element={<FeatureDetail />} />
           <Route path="solutions" element={<Solutions />} />
-          <Route path="solutions/:slug" element={<Solutions />} />
+          <Route path="solutions/:slug" element={<SolutionDetail />} />
           <Route path="resources" element={<Resources />} />
           <Route path="security" element={<Security />} />
           <Route path="pricing" element={<Pricing />} />

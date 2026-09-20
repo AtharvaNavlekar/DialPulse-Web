@@ -68,7 +68,7 @@ const roleSolutions: RoleSolution[] = [
       'In-tenant AI bullet summarization extracts budget, timeline, and next actions instantly.',
       'One-click multi-channel fallback: send WhatsApp or SMS template when calls are missed.'
     ],
-    keyOutcome: 'Cuts post-call administrative wrap-up down from 10 minutes to 30 seconds per conversation.'
+    keyOutcome: 'Automates post-call administrative wrap-up with AI bullet-point drafting and one-click disposition logging.'
   },
   {
     id: 'admin',

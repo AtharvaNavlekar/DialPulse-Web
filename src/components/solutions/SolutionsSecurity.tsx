@@ -93,7 +93,7 @@ export function SolutionsSecurity() {
 
       <div className="mt-8 p-5 rounded-2xl bg-teal-50/70 border border-teal-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
         <div className="text-slate-700">
-          <span className="font-bold text-[#00695C]">Security Compliance:</span> SOC 2 Type II aligned controls, GDPR right-to-be-forgotten data purging, and zero-compromise encryption.
+          <span className="font-bold text-[#00695C]">Security Architecture:</span> Multi-tenant isolation boundaries, structured data retention controls, and encrypted communication channels.
         </div>
         <Link
           to="/security"

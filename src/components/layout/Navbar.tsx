@@ -27,9 +27,9 @@ export function Navbar() {
     setIsMobileOpen(false);
   }, [location.pathname]);
 
-  // Click outside listener
+  // Click & touch outside listener
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (
         navContainerRef.current &&
         !navContainerRef.current.contains(event.target as Node)
@@ -38,10 +38,23 @@ export function Navbar() {
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
   }, []);
 
-  // Keyboard accessibility: Escape closes dropdown
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Keyboard accessibility: Escape closes dropdown and mobile drawer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -51,6 +64,17 @@ export function Navbar() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Viewport resize: automatically close mobile drawer if screen widens to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobileOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Hover handlers with brief intent grace period
@@ -64,7 +88,7 @@ export function Navbar() {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setOpenMenu(null);
-    }, 150);
+    }, 160);
   };
 
   // Active state evaluation
@@ -95,6 +119,7 @@ export function Navbar() {
   return (
     <div ref={navContainerRef}>
       <FloatingNav
+        isMenuOpen={Boolean(openMenu || isMobileOpen)}
         dropdown={
           <>
             <DesktopDropdown
@@ -110,20 +135,20 @@ export function Navbar() {
           </>
         }
       >
-        {/* Top Header Row (Closed: 64-68px) */}
-        <div className="flex items-center justify-between h-16 md:h-[68px] px-4 sm:px-6 w-full">
+        {/* Top Header Row (Compact & Balanced: 56-58px) */}
+        <div className="flex items-center justify-between h-14 sm:h-[58px] px-4 sm:px-5 lg:px-6 w-full">
           {/* 1. Brand Logo */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-3 shrink-0">
             <Logo size="md" variant="light" />
-            <div className="hidden lg:block h-4 w-px bg-slate-200" aria-hidden="true" />
-            <span className="hidden lg:inline-flex items-center text-[11px] font-mono font-medium tracking-wider uppercase text-slate-400">
+            <div className="hidden xl:block h-3.5 w-px bg-slate-200/90" aria-hidden="true" />
+            <span className="hidden xl:inline-flex items-center text-[10px] font-mono font-semibold tracking-wider uppercase text-slate-400 select-none">
               COMMUNICATION CRM
             </span>
           </div>
 
           {/* 2. Primary Navigation Links: Product, Solutions, Resources, Pricing */}
           <nav
-            className="hidden md:flex items-center gap-1 lg:gap-1.5"
+            className="hidden lg:flex items-center gap-1 xl:gap-1.5"
             aria-label="Main Navigation"
             onMouseLeave={handleMouseLeave}
           >
@@ -138,20 +163,33 @@ export function Navbar() {
               onMouseEnter={() => handleMouseEnter('product')}
               onClick={() => setOpenMenu(openMenu === 'product' ? null : 'product')}
               className={cn(
-                'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-medium transition-colors tracking-tight cursor-pointer',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30',
-                openMenu === 'product' || isProductActive
-                  ? 'text-slate-950 font-semibold bg-teal-50/70 text-[#00695C]'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
+                'group relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm transition-colors tracking-tight cursor-pointer',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30 focus-visible:ring-offset-1',
+                openMenu === 'product'
+                  ? 'bg-teal-50/90 text-[#00695C] font-semibold'
+                  : isProductActive
+                  ? 'bg-teal-50/50 text-[#00695C] font-semibold hover:bg-teal-50/70'
+                  : 'font-medium text-slate-600 hover:text-slate-950 hover:bg-slate-100/60'
               )}
             >
-              <span>Product</span>
+              <span>{headerNavigation.product.title}</span>
               <ChevronDown
                 className={cn(
-                  'w-3.5 h-3.5 transition-transform duration-200 text-slate-400',
-                  openMenu === 'product' && 'rotate-180 text-[#00695C]'
+                  'w-3.5 h-3.5 transition-transform duration-200',
+                  openMenu === 'product'
+                    ? 'rotate-180 text-[#00695C]'
+                    : isProductActive
+                    ? 'text-[#00695C]'
+                    : 'text-slate-400 group-hover:text-slate-600'
                 )}
+                aria-hidden="true"
               />
+              {openMenu === 'product' && (
+                <span
+                  className="absolute -bottom-1 left-3 right-3 h-0.5 bg-[#00695C] rounded-full"
+                  aria-hidden="true"
+                />
+              )}
             </button>
 
             {/* Solutions Trigger */}
@@ -165,20 +203,33 @@ export function Navbar() {
               onMouseEnter={() => handleMouseEnter('solutions')}
               onClick={() => setOpenMenu(openMenu === 'solutions' ? null : 'solutions')}
               className={cn(
-                'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-medium transition-colors tracking-tight cursor-pointer',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30',
-                openMenu === 'solutions' || isSolutionsActive
-                  ? 'text-slate-950 font-semibold bg-teal-50/70 text-[#00695C]'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
+                'group relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm transition-colors tracking-tight cursor-pointer',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30 focus-visible:ring-offset-1',
+                openMenu === 'solutions'
+                  ? 'bg-teal-50/90 text-[#00695C] font-semibold'
+                  : isSolutionsActive
+                  ? 'bg-teal-50/50 text-[#00695C] font-semibold hover:bg-teal-50/70'
+                  : 'font-medium text-slate-600 hover:text-slate-950 hover:bg-slate-100/60'
               )}
             >
-              <span>Solutions</span>
+              <span>{headerNavigation.solutions.title}</span>
               <ChevronDown
                 className={cn(
-                  'w-3.5 h-3.5 transition-transform duration-200 text-slate-400',
-                  openMenu === 'solutions' && 'rotate-180 text-[#00695C]'
+                  'w-3.5 h-3.5 transition-transform duration-200',
+                  openMenu === 'solutions'
+                    ? 'rotate-180 text-[#00695C]'
+                    : isSolutionsActive
+                    ? 'text-[#00695C]'
+                    : 'text-slate-400 group-hover:text-slate-600'
                 )}
+                aria-hidden="true"
               />
+              {openMenu === 'solutions' && (
+                <span
+                  className="absolute -bottom-1 left-3 right-3 h-0.5 bg-[#00695C] rounded-full"
+                  aria-hidden="true"
+                />
+              )}
             </button>
 
             {/* Resources Trigger */}
@@ -192,20 +243,33 @@ export function Navbar() {
               onMouseEnter={() => handleMouseEnter('resources')}
               onClick={() => setOpenMenu(openMenu === 'resources' ? null : 'resources')}
               className={cn(
-                'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-medium transition-colors tracking-tight cursor-pointer',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30',
-                openMenu === 'resources' || isResourcesActive
-                  ? 'text-slate-950 font-semibold bg-teal-50/70 text-[#00695C]'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
+                'group relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm transition-colors tracking-tight cursor-pointer',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30 focus-visible:ring-offset-1',
+                openMenu === 'resources'
+                  ? 'bg-teal-50/90 text-[#00695C] font-semibold'
+                  : isResourcesActive
+                  ? 'bg-teal-50/50 text-[#00695C] font-semibold hover:bg-teal-50/70'
+                  : 'font-medium text-slate-600 hover:text-slate-950 hover:bg-slate-100/60'
               )}
             >
-              <span>Resources</span>
+              <span>{headerNavigation.resources.title}</span>
               <ChevronDown
                 className={cn(
-                  'w-3.5 h-3.5 transition-transform duration-200 text-slate-400',
-                  openMenu === 'resources' && 'rotate-180 text-[#00695C]'
+                  'w-3.5 h-3.5 transition-transform duration-200',
+                  openMenu === 'resources'
+                    ? 'rotate-180 text-[#00695C]'
+                    : isResourcesActive
+                    ? 'text-[#00695C]'
+                    : 'text-slate-400 group-hover:text-slate-600'
                 )}
+                aria-hidden="true"
               />
+              {openMenu === 'resources' && (
+                <span
+                  className="absolute -bottom-1 left-3 right-3 h-0.5 bg-[#00695C] rounded-full"
+                  aria-hidden="true"
+                />
+              )}
             </button>
 
             {/* Direct Pricing Link */}
@@ -214,11 +278,11 @@ export function Navbar() {
               aria-current={isPricingActive ? 'page' : undefined}
               onMouseEnter={() => setOpenMenu(null)}
               className={cn(
-                'px-3.5 py-2 rounded-xl text-sm font-medium transition-colors tracking-tight',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30',
+                'px-3 py-1.5 rounded-xl text-sm transition-colors tracking-tight',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30 focus-visible:ring-offset-1',
                 isPricingActive
-                  ? 'text-slate-950 font-semibold bg-teal-50/70 text-[#00695C]'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
+                  ? 'bg-teal-50/50 text-[#00695C] font-semibold hover:bg-teal-50/70'
+                  : 'font-medium text-slate-600 hover:text-slate-950 hover:bg-slate-100/60'
               )}
             >
               {headerNavigation.pricing.label}
@@ -226,40 +290,60 @@ export function Navbar() {
           </nav>
 
           {/* 3. Action Group: Sign In + Talk to DialPulse CTA */}
-          <div className="hidden md:flex items-center gap-3 lg:gap-3.5">
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href="https://app.dialpulse.com/login"
-              className="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-slate-100/50"
+              className="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-slate-100/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/30"
             >
               Sign In
             </a>
 
-            <div className="h-4 w-px bg-slate-200" aria-hidden="true" />
+            <div className="h-3.5 w-px bg-slate-200/90" aria-hidden="true" />
 
             <Link
               to={headerNavigation.cta.href}
               className={cn(
-                'inline-flex items-center gap-2 h-10 px-4 sm:px-4.5 rounded-xl text-xs sm:text-sm font-semibold tracking-normal transition-all shadow-xs hover:shadow-sm active:scale-[0.98]',
+                'inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-normal transition-all shadow-2xs hover:shadow-xs active:scale-[0.98]',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C] focus-visible:ring-offset-1',
                 location.pathname === '/contact'
-                  ? 'bg-[#004D40] text-white ring-2 ring-[#00695C]'
+                  ? 'bg-[#004D40] text-white ring-2 ring-[#00695C]/30'
                   : 'bg-[#00695C] hover:bg-[#004D40] text-white'
               )}
             >
-              <Calendar className="w-3.5 h-3.5 opacity-90" />
-              <span>{headerNavigation.cta.label}</span>
+              <Calendar className="w-3.5 h-3.5 opacity-90 shrink-0" aria-hidden="true" />
+              <span className="whitespace-nowrap">{headerNavigation.cta.label}</span>
             </Link>
           </div>
 
-          {/* 4. Mobile Menu Toggle Button */}
-          <div className="flex md:hidden items-center">
+          {/* 4. Mobile & Tablet Navigation Controls */}
+          <div className="flex lg:hidden items-center gap-2">
+            {/* Direct CTA button for quick conversions on tablet/mobile */}
+            <Link
+              to={headerNavigation.cta.href}
+              className={cn(
+                'inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-xs font-semibold shadow-2xs transition-all active:scale-[0.98]',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/40 focus-visible:ring-offset-1',
+                location.pathname === '/contact'
+                  ? 'bg-[#004D40] text-white'
+                  : 'bg-[#00695C] hover:bg-[#004D40] text-white'
+              )}
+            >
+              <Calendar className="w-3.5 h-3.5 opacity-90 shrink-0" aria-hidden="true" />
+              <span className="whitespace-nowrap hidden sm:inline">{headerNavigation.cta.label}</span>
+              <span className="whitespace-nowrap sm:hidden">Contact</span>
+            </Link>
+
             <button
+              type="button"
+              id="mobile-nav-toggle"
               onClick={() => {
                 setIsMobileOpen(!isMobileOpen);
                 setOpenMenu(null);
               }}
-              className="p-2 -mr-1.5 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500/20 cursor-pointer"
-              aria-label="Toggle navigation menu"
+              className="w-10 h-10 flex items-center justify-center rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-100/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00695C]/40 cursor-pointer shrink-0"
+              aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMobileOpen}
+              aria-controls="mobile-nav-drawer"
             >
               {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>

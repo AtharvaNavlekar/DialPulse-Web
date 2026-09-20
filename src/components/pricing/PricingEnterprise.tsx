@@ -21,8 +21,8 @@ export function PricingEnterprise() {
       desc: 'SAML 2.0 / Okta integration, custom role hierarchies, and automated SCIM user provisioning.',
     },
     {
-      title: '1-Hour Priority Incident SLA',
-      desc: 'Guaranteed 24/7 technical escalation pathways backed by dedicated solution engineering personnel.',
+      title: 'Priority Incident Escalation SLA',
+      desc: 'Dedicated technical escalation pathways and tailored response SLAs under enterprise master service agreements.',
     },
     {
       title: 'Regulatory & Audit Export Support',
@@ -119,7 +119,7 @@ export function PricingEnterprise() {
                 </div>
                 <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center justify-between text-xs font-mono">
                   <span className="text-slate-400">Incident Escalation:</span>
-                  <span className="text-white font-bold">1-Hour P1 Response SLA</span>
+                  <span className="text-white font-bold">Tailored P1 Response SLA</span>
                 </div>
               </div>
 

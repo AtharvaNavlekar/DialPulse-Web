@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 interface MatrixEntry {
   solutionName: string;
+  slug: string;
   category: string;
   modules: {
     leads: boolean;
@@ -23,41 +24,49 @@ interface MatrixEntry {
 const matrixEntries: MatrixEntry[] = [
   {
     solutionName: '01 Lead Operations',
+    slug: 'lead-operations',
     category: 'Ingestion & Pipeline',
     modules: { leads: true, calls: true, messages: false, tickets: false, teams: true, reports: true, compliance: true, ai: false, imports: true, admin: false }
   },
   {
     solutionName: '02 Sales Team Operations',
+    slug: 'sales-team-operations',
     category: 'Hierarchy & Presence',
     modules: { leads: true, calls: true, messages: false, tickets: false, teams: true, reports: true, compliance: false, ai: false, imports: false, admin: true }
   },
   {
     solutionName: '03 Customer Communication',
+    slug: 'customer-communication',
     category: 'WebRTC & Omnichannel',
     modules: { leads: true, calls: true, messages: true, tickets: false, teams: false, reports: false, compliance: true, ai: false, imports: false, admin: false }
   },
   {
     solutionName: '04 Follow-Up Control',
+    slug: 'follow-up-control',
     category: 'Cadence & Dispositions',
     modules: { leads: true, calls: true, messages: true, tickets: false, teams: true, reports: true, compliance: true, ai: false, imports: false, admin: false }
   },
   {
     solutionName: '05 Performance Visibility',
+    slug: 'performance-visibility',
     category: 'Async Reporting',
     modules: { leads: true, calls: true, messages: false, tickets: false, teams: true, reports: true, compliance: false, ai: false, imports: false, admin: false }
   },
   {
     solutionName: '06 Communication Compliance',
+    slug: 'communication-compliance',
     category: 'Policy & DNC Lock',
     modules: { leads: true, calls: true, messages: true, tickets: false, teams: false, reports: true, compliance: true, ai: false, imports: false, admin: true }
   },
   {
     solutionName: '07 Customer Operations',
+    slug: 'customer-operations',
     category: 'Unified Customer 360',
     modules: { leads: true, calls: true, messages: true, tickets: true, teams: true, reports: true, compliance: true, ai: true, imports: true, admin: true }
   },
   {
     solutionName: '08 AI Sales Assistance',
+    slug: 'ai-assisted-work',
     category: 'Contextual AI',
     modules: { leads: true, calls: true, messages: true, tickets: false, teams: false, reports: false, compliance: false, ai: true, imports: false, admin: false }
   }
@@ -121,7 +130,17 @@ export function SolutionsProductMatrix() {
                   )}
                 >
                   <td className="py-3 px-4 font-bold text-slate-900 whitespace-nowrap">
-                    {row.solutionName}
+                    <div className="flex items-center gap-2">
+                      <span>{row.solutionName}</span>
+                      <Link
+                        to={`/solutions/${row.slug}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-[10px] font-mono font-normal text-[#00695C] hover:underline"
+                        title="View solution detail"
+                      >
+                        [spec →]
+                      </Link>
+                    </div>
                   </td>
                   <td className="py-3 px-3 text-[11px] font-mono text-slate-500 whitespace-nowrap">
                     {row.category}

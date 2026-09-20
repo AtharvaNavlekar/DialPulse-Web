@@ -50,7 +50,7 @@ export function PricingWhoIsThisFor() {
       recommendedPlan: 'Enterprise',
       badge: 'Dedicated Tenant Partition',
       icon: Building2,
-      situation: 'Multi-branch operations requiring single-tenant database isolation, private AI transcription perimeters, custom SIP trunks, and 1-hour SLAs.',
+      situation: 'Multi-branch operations requiring single-tenant database isolation, private AI transcription perimeters, custom SIP trunks, and tailored SLAs.',
       characteristics: [
         'Dedicated PostgreSQL database partition with isolated KMS keys',
         'Private speech-to-text transcriptions with zero public AI model training',

@@ -56,15 +56,15 @@ export default function Home() {
               <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center gap-6 text-xs font-medium text-slate-500">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>No credit card required</span>
+                  <span>Multi-tenant data isolation</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Full feature 14-day trial</span>
+                  <span>In-browser WebRTC telephony</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>SOC 2 Type II compliant</span>
+                  <span>Automated compliance guardrails</span>
                 </div>
               </div>
             </div>

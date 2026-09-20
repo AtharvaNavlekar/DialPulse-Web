@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { FloatingContact } from './FloatingContact';
+import { FloatingScrollTop } from './FloatingScrollTop';
 
 export function Layout() {
   return (
@@ -11,7 +11,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <FloatingContact />
+      <FloatingScrollTop />
     </div>
   );
 }

@@ -91,7 +91,7 @@ const workflowSteps: WorkflowStep[] = [
     icon: Clock,
     actionTitle: 'Mandatory Callback Cadence',
     description: 'Calls cannot be closed without a verified disposition tag. Scheduled callbacks trigger notification alerts directly in the agent’s softphone drawer.',
-    traditionalFailure: 'Over 60% of interested leads drop off because reps forget to make the second or third follow-up call.',
+    traditionalFailure: 'Interested leads frequently stall or drop off when reps lack disciplined second or third follow-up cadences.',
     dialpulseAdvantage: 'Structured follow-up reminders and automated multi-touch queues keep pipeline momentum alive.',
     modules: ['Leads', 'Calls', 'Messages']
   },

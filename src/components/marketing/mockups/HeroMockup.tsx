@@ -59,7 +59,7 @@ export function HeroMockup() {
             {[
               { label: 'Active Leads', value: '1,248', trend: '+12%', icon: Users, color: 'text-teal-700', bg: 'bg-teal-50', border: 'border-teal-100' },
               { label: 'Calls Made', value: '432', trend: '+5%', icon: Phone, color: 'text-blue-700', bg: 'bg-blue-50', border: 'border-blue-100' },
-              { label: 'Compliance Rate', value: '99.9%', trend: 'Passed', icon: ShieldCheck, color: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-100' },
+              { label: 'Compliance Checks', value: '100%', trend: 'Verified', icon: ShieldCheck, color: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-100' },
             ].map((metric, i) => (
               <div 
                 key={i} 

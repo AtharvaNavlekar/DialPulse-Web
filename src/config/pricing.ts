@@ -173,9 +173,9 @@ export const PRICING_PLANS: PricingPlan[] = [
       'Everything in Business, plus:',
       'Dedicated tenant database partition & custom encryption',
       'In-tenant speech-to-text call transcription & AI summaries',
-      'Zero public AI model training perimeter guarantee',
+      'Tenant-isolated AI speech processing & summary perimeter',
       'Custom telephony SIP trunks & carrier integrations',
-      'Dedicated Customer Success Manager & 1-hour SLA',
+      'Dedicated Customer Success & tailored SLA options',
       'Custom Role-Based Access & SSO/SAML configuration',
       'Comprehensive security review & audit log export',
     ],
@@ -439,7 +439,7 @@ export const COMPARISON_CATEGORIES: FeatureCategory[] = [
         name: 'Guaranteed Support SLA',
         description: 'Response time guarantees with dedicated escalation pathways for production telemetry.',
         whoNeedsIt: 'Mission-critical operations whose primary revenue stream depends on continuous dialing.',
-        availability: { core: 'Standard', pro: 'Standard', business: 'Priority', enterprise: '1-Hour SLA' },
+        availability: { core: 'Standard', pro: 'Standard', business: 'Priority', enterprise: 'Tailored SLA' },
       },
     ],
   },
@@ -473,10 +473,10 @@ export const DECISION_OPTIONS: DecisionOption[] = [
   {
     id: 'enterprise',
     title: 'Deploy Dedicated Infrastructure & AI',
-    problemStatement: 'Need dedicated database partitioning, in-tenant private speech AI, custom carrier SIP trunks, and a 1-hour SLA.',
+    problemStatement: 'Need dedicated database partitioning, in-tenant private speech AI, custom carrier SIP trunks, and tailored SLAs.',
     recommendedPlanId: 'enterprise',
     whyThisPlan: 'Enterprise provides dedicated single-tenant database partitions, private AI perimeters, and custom contract engineering.',
-    keyModules: ['Dedicated Partition', 'In-Tenant AI', 'SIP Interconnect', '1-Hour SLA'],
+    keyModules: ['Dedicated Partition', 'In-Tenant AI', 'SIP Interconnect', 'Tailored SLA'],
   },
 ];
 

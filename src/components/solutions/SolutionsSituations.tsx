@@ -20,6 +20,7 @@ interface Situation {
   primaryFriction: string;
   dialpulseFit: string[];
   suggestedSolution: string;
+  solutionSlug: string;
 }
 
 const operationalSituations: Situation[] = [
@@ -34,7 +35,8 @@ const operationalSituations: Situation[] = [
       'Visual drag-and-drop Kanban pipeline stages.',
       'Custom lead property schemas to match your sales qualification process.'
     ],
-    suggestedSolution: '01 Manage Leads & Custom Pipelines'
+    suggestedSolution: '01 Manage Leads & Custom Pipelines',
+    solutionSlug: 'lead-operations'
   },
   {
     id: 'multi-user',
@@ -47,7 +49,8 @@ const operationalSituations: Situation[] = [
       'Real-time agent presence monitoring (on-call, idle, wrap-up).',
       'Instant lead redistribution to active telecallers.'
     ],
-    suggestedSolution: '02 Run Sales Teams & Presence'
+    suggestedSolution: '02 Run Sales Teams & Presence',
+    solutionSlug: 'sales-team-operations'
   },
   {
     id: 'high-volume',
@@ -60,7 +63,8 @@ const operationalSituations: Situation[] = [
       'Dual-track audio recording automatically mapped to contact history.',
       'One-click disposition outcome tagging (Interested, Call Back, Busy).'
     ],
-    suggestedSolution: '03 Customer Communication Center'
+    suggestedSolution: '03 Customer Communication Center',
+    solutionSlug: 'customer-communication'
   },
   {
     id: 'communication-heavy',
@@ -73,7 +77,8 @@ const operationalSituations: Situation[] = [
       'Unified customer conversation thread combining voice logs and text messages.',
       'Delivery receipts and message status tracking across gateways.'
     ],
-    suggestedSolution: '04 Follow-Up Cadence & Fallback'
+    suggestedSolution: '04 Follow-Up Cadence & Fallback',
+    solutionSlug: 'follow-up-control'
   },
   {
     id: 'operational-control',
@@ -86,7 +91,8 @@ const operationalSituations: Situation[] = [
       'Comprehensive security event and audit logging on all system actions.',
       'Tenant-isolated PostgreSQL database partitioning.'
     ],
-    suggestedSolution: '07 Centralized Customer Operations'
+    suggestedSolution: '07 Centralized Customer Operations',
+    solutionSlug: 'customer-operations'
   },
   {
     id: 'policy-driven',
@@ -99,7 +105,8 @@ const operationalSituations: Situation[] = [
       'Timezone-aware quiet hour lockout (e.g. 9:00 AM – 8:00 PM local recipient window).',
       'Permanent compliance audit trail for every permitted or suppressed dial.'
     ],
-    suggestedSolution: '06 Communication Compliance'
+    suggestedSolution: '06 Communication Compliance',
+    solutionSlug: 'communication-compliance'
   }
 ];
 
@@ -179,13 +186,21 @@ export function SolutionsSituations() {
             </h3>
           </div>
 
-          <a
-            href="#solution-explorer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-50 border border-teal-200 text-[#00695C] text-xs font-mono font-bold hover:bg-teal-100 transition-colors self-start md:self-auto"
-          >
-            <span>Jump to {activeSit.suggestedSolution}</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            <Link
+              to={`/solutions/${activeSit.solutionSlug}`}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-mono font-bold hover:bg-slate-800 transition-colors"
+            >
+              <span>Explore Solution Specification</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+            <a
+              href="#solution-explorer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-teal-50 border border-teal-200 text-[#00695C] text-xs font-mono font-semibold hover:bg-teal-100 transition-colors"
+            >
+              <span>View Interactive Mockup</span>
+            </a>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">

@@ -338,6 +338,7 @@ export const footerNavigation: FooterNavigation = {
     links: [
       { label: 'Resources', href: '/resources' },
       { label: 'FAQ', href: '/faq' },
+      { label: 'Security', href: '/security' },
       { label: 'Blog', href: '/blog', isComingSoon: true },
       { label: 'Guides', href: '/guides', isComingSoon: true },
       { label: 'Case Studies', href: '/case-studies', isComingSoon: true },
@@ -354,6 +355,7 @@ export const footerNavigation: FooterNavigation = {
       subtitle: 'Company',
       links: [
         { label: 'About', href: '/about' },
+        { label: 'Pricing', href: '/pricing' },
         { label: 'Contact', href: '/contact' },
         { label: 'Careers', href: '/careers', isComingSoon: true },
       ],
