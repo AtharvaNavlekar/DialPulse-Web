@@ -152,6 +152,31 @@ export function PrivacySections() {
               </ul>
             </div>
           </div>
+
+          {/* Website Contact Inquiries & Local Preferences */}
+          <div className="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/80 flex flex-col justify-between md:col-span-2">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-on-surface">Website Inquiries & Local Preferences</h3>
+                  <span className="text-[11px] font-mono text-primary font-medium">Public Marketing Site Data</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-on-surface-variant leading-relaxed">
+                <div>
+                  <strong className="text-on-surface block mb-1">Direct Contact Inquiries (/contact):</strong>
+                  When submitting an inquiry or architecture walkthrough request, we collect strictly the fields submitted in the form: First Name, Last Name, Work Email, Company Name, and Message body.
+                </div>
+                <div>
+                  <strong className="text-on-surface block mb-1">Local Browser Storage & Consent:</strong>
+                  We store user consent states (<code className="font-mono text-primary bg-surface-container px-1 py-0.5 rounded">dialpulse_cookie_consent_v1</code>) and UI configuration preferences. We do not deploy third-party advertising tracking pixels or cross-site surveillance scripts.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -244,6 +269,18 @@ export function PrivacySections() {
               <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
               <span className="text-xs sm:text-sm text-on-surface-variant">
                 <strong className="text-on-surface">No Cross-Tenant Tracking:</strong> Customer data is never shared across tenants or sold to brokers.
+              </span>
+            </div>
+            <div className="flex items-start gap-2.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+              <span className="text-xs sm:text-sm text-on-surface-variant">
+                <strong className="text-on-surface">Responding to Inquiries:</strong> Processing contact requests, demonstration bookings, and architecture consultations.
+              </span>
+            </div>
+            <div className="flex items-start gap-2.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+              <span className="text-xs sm:text-sm text-on-surface-variant">
+                <strong className="text-on-surface">Preserving User Choices:</strong> Retaining local storage preferences (billing toggles, table density, cookie consent).
               </span>
             </div>
           </div>
@@ -622,6 +659,14 @@ export function PrivacySections() {
             </tbody>
           </table>
         </div>
+
+        {/* Client-Side Cookies & Local Storage Disclosure */}
+        <div className="mt-4 p-4 rounded-xl bg-surface-container border border-outline-variant/80 text-xs sm:text-sm text-on-surface-variant leading-relaxed flex items-start gap-3">
+          <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+          <div>
+            <strong className="text-on-surface font-semibold">Client-Side Cookies & Local Storage:</strong> DialPulse utilizes strictly necessary local storage items (such as <code className="font-mono text-primary bg-surface-container-low px-1 py-0.5 rounded">dialpulse_cookie_consent_v1</code> and authenticated workspace session tokens) and user UI preferences. We do not deploy third-party advertising cookies or cross-site tracking scripts. For detailed category breakdowns and browser controls, see our dedicated <a href="/cookies" className="text-primary hover:underline font-semibold">Cookie Policy</a>.
+          </div>
+        </div>
       </section>
 
       {/* =========================================================================
@@ -860,9 +905,22 @@ export function PrivacySections() {
         {/* Unconfirmed Request Process */}
         <div className="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/80 text-xs sm:text-sm text-on-surface-variant flex items-start gap-3.5 mb-4">
           <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-          <div>
-            <strong className="text-on-surface font-semibold block mb-0.5">Privacy Requests Workflow:</strong>
-            Because DialPulse functions primarily as a technology platform for business tenants, end-consumer rights requests should generally be directed to the customer organization controlling the campaign. Direct request workflows and contact details are <span className="font-mono text-xs text-amber-800 bg-amber-100/60 px-1 py-0.5 rounded">To be confirmed</span> pending DPO designation.
+          <div className="space-y-1.5">
+            <div>
+              <strong className="text-on-surface font-semibold">Privacy Requests & Deletion Inquiries:</strong>{' '}
+              Because DialPulse functions primarily as a technology processor for business tenants, individuals seeking access or deletion of prospect records should generally direct requests to the operating organization controlling the outreach.
+            </div>
+            <div>
+              For general website privacy inquiries, data requests, or withdrawal of consent regarding communications submitted via our website, visitors may submit a request through our{' '}
+              <a href="/contact" className="text-primary font-semibold hover:underline">
+                Contact Form (/contact)
+              </a>
+              . Dedicated privacy email aliases and statutory DPO contacts are{' '}
+              <span className="font-mono text-xs text-amber-800 bg-amber-100/60 px-1 py-0.5 rounded">
+                To be confirmed
+              </span>{' '}
+              pending organizational designation.
+            </div>
           </div>
         </div>
 
