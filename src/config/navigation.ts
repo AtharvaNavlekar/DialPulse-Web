@@ -366,6 +366,8 @@ export const footerNavigation: FooterNavigation = {
         { label: 'Security', href: '/security' },
         { label: 'Privacy Policy', href: '/privacy' },
         { label: 'Terms of Service', href: '/terms' },
+        { label: 'Cookie Policy', href: '/cookies' },
+        { label: 'Refund Policy', href: '/refund' },
       ],
     },
   },
@@ -373,6 +375,8 @@ export const footerNavigation: FooterNavigation = {
     links: [
       { label: 'Privacy Policy', href: '/privacy' },
       { label: 'Terms of Service', href: '/terms' },
+      { label: 'Cookie Policy', href: '/cookies' },
+      { label: 'Refund Policy', href: '/refund' },
     ],
     copyrightOwner: 'DialPulse',
   },

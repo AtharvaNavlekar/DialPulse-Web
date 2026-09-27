@@ -671,7 +671,10 @@ export function TermsSections() {
             </div>
             <div className="p-3 rounded-xl bg-surface-container-low border border-outline-variant">
               <span className="text-on-surface-variant block text-xs">Refund Policy</span>
-              <strong className="text-on-surface font-mono text-xs">To be confirmed</strong>
+              <div className="flex items-center gap-1.5 pt-0.5">
+                <strong className="text-on-surface font-mono text-xs">To be confirmed / Order Form</strong>
+                <a href="/refund" className="text-primary hover:underline text-xs font-semibold ml-1">View Policy →</a>
+              </div>
             </div>
             <div className="p-3 rounded-xl bg-surface-container-low border border-outline-variant">
               <span className="text-on-surface-variant block text-xs">Renewal Terms</span>

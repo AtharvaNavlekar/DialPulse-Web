@@ -607,6 +607,18 @@ export function PrivacySections() {
                   </span>
                 </td>
               </tr>
+              <tr>
+                <td className="py-3.5 px-4 font-semibold text-on-surface whitespace-nowrap">
+                  Telephony Carrier Gateways (Twilio / Telnyx / Exotel / SIP)
+                </td>
+                <td className="py-3.5 px-4">WebRTC audio relay, PSTN dialing & SMS termination</td>
+                <td className="py-3.5 px-4">Phone numbers, call audio streams, timestamps & SMS payloads</td>
+                <td className="py-3.5 px-4">
+                  <span className="inline-flex items-center gap-1 font-mono text-[11px] text-amber-800 bg-amber-500/10 px-2 py-0.5 rounded">
+                    Configured per customer / BYOC trunking
+                  </span>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -676,6 +688,24 @@ export function PrivacySections() {
                 <td className="py-3.5 px-4">Generated through asynchronous background worker jobs</td>
                 <td className="py-3.5 px-4">Storage lifecycle requires infrastructure confirmation</td>
                 <td className="py-3.5 px-4 font-mono text-[11px] text-amber-800">TBD</td>
+              </tr>
+              <tr>
+                <td className="py-3.5 px-4 font-semibold text-on-surface">Call Audio Media</td>
+                <td className="py-3.5 px-4">Stored in encrypted object buckets / carrier media vaults</td>
+                <td className="py-3.5 px-4">Dependent on bucket lifecycle rules / TBD</td>
+                <td className="py-3.5 px-4 font-mono text-[11px] text-amber-800">Retention TBD (Hot vs Cold Archive)</td>
+              </tr>
+              <tr>
+                <td className="py-3.5 px-4 font-semibold text-on-surface">AI Summaries & Transcripts</td>
+                <td className="py-3.5 px-4">Stored as text fields linked to call logs and leads</td>
+                <td className="py-3.5 px-4">No automated purge identified in code</td>
+                <td className="py-3.5 px-4 font-mono text-[11px] text-amber-800">Requires business/legal confirmation</td>
+              </tr>
+              <tr>
+                <td className="py-3.5 px-4 font-semibold text-on-surface">DNC & Opt-Out Records</td>
+                <td className="py-3.5 px-4">Stored in tenant suppression lists to prevent unlawful dialing</td>
+                <td className="py-3.5 px-4">Retained permanently to enforce ongoing opt-out suppression</td>
+                <td className="py-3.5 px-4 font-mono text-[11px] text-emerald-800">Permanent Suppression Rationale</td>
               </tr>
             </tbody>
           </table>
@@ -828,11 +858,22 @@ export function PrivacySections() {
         </div>
 
         {/* Unconfirmed Request Process */}
-        <div className="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/80 text-xs sm:text-sm text-on-surface-variant flex items-start gap-3.5">
+        <div className="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/80 text-xs sm:text-sm text-on-surface-variant flex items-start gap-3.5 mb-4">
           <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
           <div>
             <strong className="text-on-surface font-semibold block mb-0.5">Privacy Requests Workflow:</strong>
             Because DialPulse functions primarily as a technology platform for business tenants, end-consumer rights requests should generally be directed to the customer organization controlling the campaign. Direct request workflows and contact details are <span className="font-mono text-xs text-amber-800 bg-amber-100/60 px-1 py-0.5 rounded">To be confirmed</span> pending DPO designation.
+          </div>
+        </div>
+
+        {/* Technical Architecture Note: Audit Deletion Paradox */}
+        <div className="p-5 rounded-2xl bg-surface-container border border-amber-500/40 text-xs sm:text-sm text-on-surface-variant leading-relaxed flex items-start gap-3.5">
+          <AlertCircle className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
+          <div>
+            <span className="font-mono text-xs text-amber-800 font-bold uppercase tracking-wider block mb-0.5">
+              TECHNICAL AUDIT DISCLOSURE: THE DELETION VS AUDIT PARADOX
+            </span>
+            A technical distinction exists between lead deletion and immutable regulatory compliance logs. While lead contact details (names, phone numbers) can be deleted or anonymized upon request, historical compliance audit trails (e.g. proof that a specific call attempt was blocked or cleared against DNC registries) are preserved in append-only logs for statutory legal defense and audit integrity.
           </div>
         </div>
       </section>

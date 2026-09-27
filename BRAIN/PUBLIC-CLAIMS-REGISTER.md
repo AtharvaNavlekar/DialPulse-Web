@@ -108,6 +108,17 @@ All public statements, marketing copy, documentation, and interface text across 
 | **MET-003** | "Reps spend 30% / 35% of their workday typing manual summaries" | `src/components/solutions/SolutionsComparison.tsx`, `src/components/solutions/SolutionExplorer.tsx` | Marketing | **E** | **UNSUPPORTED METRIC**: Arbitrary daily percentage burden without cited time-motion study. | **REMEDIATED**: Rewritten to qualitative reality: "Reps spend substantial time each day typing manual summaries". |
 | **MET-004** | "Compliance Rate: 99.9% / 100% Passed" in supervisor dashboard mockup | `src/components/marketing/mockups/HeroMockup.tsx` | Product Mockup | **F** | Mockup UI component illustrating supervisor compliance monitoring. | **REMEDIATED**: Labeled as "Compliance Checks: 100% Verified" to accurately depict zero-bypass pre-flight verification. |
 
+### 3.8 Legal, Privacy, Cookie & Refund Claims
+
+| ID | Verbatim Claim / Text | Location / File | Category | Class | Verification / Evidence | Status / Remediation Action |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **LEG-001** | "Zero third-party advertising cookies or cross-site tracking pixels" | `src/components/common/CookieConsentBanner.tsx`, `src/pages/Cookies.tsx`, `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md` | Privacy | **A** | Verified in codebase: bundle loads no Google Analytics, Meta Pixel, Hotjar, or Segment scripts. | Approved. Factual representation of client runtime. |
+| **LEG-002** | "Telephony carrier usage consumption charges are non-refundable" | `src/pages/Refund.tsx`, `src/config/pricing.ts` | Commercial/Refund | **B** | Verified in telephony architecture. Carrier termination costs are direct consumption fees that cannot be recalled. | Approved. Transparent B2B commercial term. |
+| **LEG-003** | "Audit log immutability vs lead deletion paradox" | `src/components/privacy/PrivacySections.tsx`, `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md` | Privacy/Audit | **B** | Verified in append-only schema: compliance audit logs cannot delete transaction proof without compromising legal defense. | Approved. Explicitly disclosed as a technical boundary. |
+| **LEG-004** | "Standard money-back guarantee / statutory consumer cooling-off" | Prior marketing boilerplate (neutralized) | Commercial/Refund | **E** | **UNSUPPORTED**: DialPulse is a B2B platform; consumer statutory refund windows do not apply by default. | **REMEDIATED**: Clearly disclosed on `/refund` that services are B2B and governed by signed agreements; standard self-serve windows marked TBD. |
+| **LEG-005** | "Legal entity, DPO contact, and governing law marked as To be confirmed" | `src/components/privacy/PrivacySections.tsx`, `src/components/terms/TermsSections.tsx`, `src/pages/Cookies.tsx` | Legal Governance | **D** | Corporate legal counsel and DPO appointment pending. | Approved. Transparent pre-publication status flags prevent legal fabrication. |
+
+
 ---
 
 ## 4. Remediation Action Summary

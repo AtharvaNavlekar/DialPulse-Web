@@ -16,6 +16,8 @@ import Pricing from '@/pages/Pricing';
 import Contact from '@/pages/Contact';
 import Privacy from '@/pages/Privacy';
 import Terms from '@/pages/Terms';
+import Cookies from '@/pages/Cookies';
+import Refund from '@/pages/Refund';
 import FAQ from '@/pages/FAQ';
 import About from '@/pages/About';
 import Resources from '@/pages/Resources';
@@ -44,6 +46,8 @@ export default function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="privacy" element={<Privacy />} />
           <Route path="terms" element={<Terms />} />
+          <Route path="cookies" element={<Cookies />} />
+          <Route path="refund" element={<Refund />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="blog" element={<ComingSoonPage />} />
           <Route path="guides" element={<ComingSoonPage />} />

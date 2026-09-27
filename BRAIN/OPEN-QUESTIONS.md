@@ -73,6 +73,24 @@ This document tracks unresolved business decisions, legal determinations, and co
     - Can DialPulse guarantee strict domestic data residency (e.g., India-only or EU-only storage and compute) for enterprise customers with data sovereignty mandates?
     - *Current Status*: Core subprocessors listed transparently on `/security`; contractual residency options marked for private architecture review.
 
+16. **Standard B2B Refund Terms & Cooling-Off Windows**:
+    - What is the executive decision regarding standard money-back guarantees (e.g. 14-day vs. 30-day window, or strictly no refunds once provisioning begins)?
+    - How are telephony carrier usage consumption fees reconciled upon account cancellation?
+    - *Current Status*: Dedicated pre-publication policy published at `/refund` disclaiming universal consumer refunds and clarifying that telephony carrier consumption and compute usage are non-refundable. Final formal windows marked as "To be confirmed".
+
+17. **Cookie Policy & Third-Party Telemetry Approval**:
+    - Will DialPulse deploy third-party analytics (Google Analytics 4, Plausible, PostHog) on the public website upon production launch?
+    - *Current Status*: Client-side cookie consent banner, storage store, modal preferences, and `/cookies` route implemented. Local storage taxonomy distinguishes Essential, Preferences, Analytics, and Marketing (currently zero third-party trackers). Production vendor selection pending marketing approval.
+
+18. **Lead Erasure vs. Compliance Audit Log Paradox**:
+    - How should lead erasure requests under GDPR Article 17 / DPDP Act be technically resolved against permanent compliance audit logs (e.g., proof of DNC pre-flight clearing for past calls)?
+    - Should contact PII be pseudonymized/tombstoned while preserving transaction proof?
+    - *Current Status*: Disclosed transparently in `/privacy` as a technical architecture constraint; formal legal resolution pending DPO and legal counsel determination.
+
+19. **Official Privacy, DPO & Terms Support Channels**:
+    - What are the dedicated monitored mailboxes for privacy and legal inquiries (e.g., `privacy@dialpulse.com`, `legal@dialpulse.com`)?
+    - *Current Status*: Placeholders ("To be confirmed / Pending DPO setup") maintained across `/privacy`, `/terms`, `/cookies`, and `/refund`; awaiting infrastructure team domain mailbox provisioning.
+
 ---
 
 ## 5. Solutions Architecture & Operational Workflows
