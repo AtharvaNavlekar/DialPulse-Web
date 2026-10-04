@@ -35,3 +35,13 @@
 - Structured 4 operational tiers (Core, Pro, Business, Enterprise) mapped to verified platform capabilities (WebRTC softphone, dual-track recordings, zero-bypass DNC, quiet hours, in-tenant AI, and PostgreSQL tenant isolation).
 - Added an interactive Decision Helper ("What are you trying to solve?") with deterministic business rules, an expandable 8-category comparison table with click-to-view feature specification drawers, modular add-on architecture, and transparent B2B buyer diligence safeguards.
 **Rationale**: Builds commercial trust with enterprise buyers while leaving zero technical debt for business operations to plug in approved rates upon final launch.
+
+## 6. Formal SDLC Governance & Truthfulness Gates
+**Context**: As the public website expanded across 15+ routes, technical security modules, commercial pricing, and legal trust pages, an engineering and content governance framework was required to prevent regression, unverified claims, secret leakage, and uncontrolled releases.
+**Decision**:
+- Established a formal 9-stage SDLC pipeline (Planning → Requirements → Analysis → Design → Development → Testing/QA → Security/Privacy Review → Release → Maintenance) documented in `BRAIN/SDLC.md`.
+- Formalized requirements engineering (`BRAIN/SDLC-REQUIREMENTS.md`) with standardized requirement ID prefixes (`FR`, `NFR`, `SEC`, `PRIV`, `UX`, `SEO`, `OPS`) and a 12-field mandatory template.
+- Implemented formal Change Control (`BRAIN/SDLC-CHANGE-CONTROL.md`) defining 7 change categories (PATCH, MINOR, FEATURE, MAJOR, SECURITY, LEGAL/COMPLIANCE, CONTENT), a 4-tier risk matrix, and explicit re-analysis/re-testing triggers.
+- Formulated a 13-point Master Test Plan (`BRAIN/SDLC-TEST-PLAN.md`) transparently distinguishing currently active commands (`npm run lint`, `npm run build`) from roadmap automation (Vitest/Playwright).
+- Created a pre-release and deployment quality gate (`BRAIN/SDLC-RELEASE-CHECKLIST.md`) with mandatory rollback criteria and release sign-off templates.
+**Rationale**: Anchors engineering velocity in strict truthfulness, verifiable gates, and absolute client-side secret hygiene, safeguarding enterprise trust.

@@ -1,5 +1,13 @@
 # Changelog
 
+## [2026-10-04] - Software Development Lifecycle (SDLC) Governance Foundation
+- **Master SDLC Operating Standard (`BRAIN/SDLC.md`)**: Established the official 9-stage engineering and content lifecycle (Planning → Requirements → Analysis → Design → Development → Testing/QA → Security/Privacy Review → Release → Maintenance) with explicit RACI governance, inputs, outputs, exit criteria, and rework flows.
+- **Requirements Engineering Governance (`BRAIN/SDLC-REQUIREMENTS.md`)**: Defined the formal requirements writing standard with mandatory 12-field specification template and persistent ID taxonomy (`FR`, `NFR`, `SEC`, `PRIV`, `UX`, `SEO`, `OPS`), illustrated with verified reference examples.
+- **Change Control Framework (`BRAIN/SDLC-CHANGE-CONTROL.md`)**: Established change governance covering 7 change categories (PATCH, MINOR, FEATURE, MAJOR, SECURITY, LEGAL/COMPLIANCE, CONTENT), a 4-tier risk matrix (LOW, MEDIUM, HIGH, CRITICAL), and explicit triggers for mandatory Stage C re-analysis and Stage F/G re-testing.
+- **Master Testing Strategy (`BRAIN/SDLC-TEST-PLAN.md`)**: Formulated the 13-point test plan framework (Static/Type, Build, Unit, Integration, UI, Route, Responsive, Accessibility, Security, Privacy, SEO, Regression, Production Smoke), transparently documenting current automation reality (`npm run lint`, `npm run build`) vs manual protocols and roadmap runners.
+- **Release Verification & Rollback Protocol (`BRAIN/SDLC-RELEASE-CHECKLIST.md`)**: Established pre-release verification gates, deployment execution steps, post-release production smoke checks, immediate rollback criteria, and formal release sign-off templates.
+- **Knowledge Base Synchronization**: Updated `BRAIN/README.md` and `BRAIN/DECISIONS.md` to index and anchor the SDLC standard as the permanent source of truth for DialPulse-Web engineering.
+
 ## [2026-09-19] - Commercial Pricing Architecture & Dedicated /pricing Route
 - **Dedicated Pricing Experience (`/pricing`)**: Designed and built the complete commercial decision experience adhering to Material 3 + DialPulse CRM design tokens (Primary `#00695C`, surface `#F8FAF8`, Plus Jakarta Sans, JetBrains Mono).
 - **Non-Fabrication Policy**: Strictly avoided inventing prices, fake user limits, or artificial "Save 20%" discounts. Clearly communicated "TBD" and "Talk to Sales" states while keeping all commercial parameters fully configurable.
