@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026-10-04] - SDLC-02: Current Project Requirements Baseline
+- **Authoritative Requirements Baseline (`BRAIN/REQUIREMENTS-BASELINE.md`)**: Established the canonical project requirements baseline defining 23 structured requirements across 7 categories (5 Functional, 2 Non-Functional, 3 Security, 5 Privacy, 2 UX/Accessibility, 2 SEO, 4 Operations). Every requirement adheres to the mandatory 12-field specification template.
+- **Explicit Status Discipline**: Classified each requirement into standardized governance states: 4 Verified (automated/audit), 9 Implemented (manual QA), 1 Implemented (simulated contact form), 4 Blocked (pending external legal entity, retention schedule, AI contract, or CRM webhook), and 4 Planned (Vitest, Playwright, secret scan, SEO crawler).
+- **Traceability Reconciliation (`BRAIN/SDLC-TRACEABILITY.md`)**: Reconciled and updated the Requirements Traceability Matrix to version 1.1.0, mapping all 23 baseline requirements with verified evidence and marking roadmap gaps explicitly as `NOT YET VERIFIED`, `BLOCKED`, or `PLANNED`.
+- **Knowledge Base Synchronization (`BRAIN/README.md`)**: Indexed `REQUIREMENTS-BASELINE.md` under the SDLC Governance Standard in the central project documentation directory.
+- **Scope Boundary**: Documentation and requirements baseline only; no source code, UI, routes, legal pages, or dependencies were modified.
+
 ## [2026-10-04] - SDLC Governance Completion: Traceability Matrix & Risk Register
 - **Requirements Traceability Matrix (`BRAIN/SDLC-TRACEABILITY.md`)**: Established bidirectional traceability mapping 15 verified functional, non-functional, security, privacy, UX, SEO, and operational requirements (`FR-001` through `FR-004`, `NFR-001`, `NFR-002`, `SEC-001`, `SEC-002`, `PRIV-001`, `PRIV-002`, `UX-001`, `UX-002`, `SEO-001`, `OPS-001`, `OPS-002`) to design specifications, source implementations, verification evidence, and release milestones. Explicitly marked unsupported and roadmap verification as `NOT YET VERIFIED`.
 - **Centralized Risk Register (`BRAIN/RISK-REGISTER.md`)**: Documented 10 verified project risks (`RSK-001` to `RSK-010`) covering unsupported public claims, unresolved legal entity details, retention window uncertainties, AI provider contractual terms, simulated contact form backend, automated test runner limitations, and dependency risks with qualitative likelihood/impact/severity ratings and active mitigations.

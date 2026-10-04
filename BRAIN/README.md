@@ -16,6 +16,7 @@ This directory acts as the central source of truth for the DialPulse project.
 ## SDLC Governance Standard
 - `SDLC.md`: Master 9-stage Software Development Lifecycle operating procedure.
 - `SDLC-REQUIREMENTS.md`: Requirements engineering framework and ID taxonomy (`FR`, `NFR`, `SEC`, `PRIV`, `UX`, `SEO`, `OPS`).
+- `REQUIREMENTS-BASELINE.md`: Canonical authoritative requirements inventory categorized across Functional, Non-Functional, Security, Privacy, UX, SEO, and Operations.
 - `SDLC-TRACEABILITY.md`: Bidirectional requirements traceability matrix linking requirements, design, implementation, and test evidence.
 - `SDLC-CHANGE-CONTROL.md`: Formal change control rules, categories, risk matrix, and re-test triggers.
 - `SDLC-TEST-PLAN.md`: 13-point master testing strategy, verification reality, and QA matrix.
