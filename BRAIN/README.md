@@ -9,6 +9,8 @@ This directory acts as the central source of truth for the DialPulse project.
 - `BRAND-RULES.md`: Absolute constraints on what NOT to do (Anti-Slop rules).
 - `PUBLIC-CLAIMS-REGISTER.md`: Verified claims inventory, classification schema, and truthfulness audit.
 - `PRIVACY-POLICY-REQUIREMENTS.md`: Internal privacy requirements specification and technical facts.
+- `INDIA-COMPLIANCE-ALIGNMENT.md`: Dated India IT/data protection applicability assessment, website-vs-CRM boundary, legal timing, current evidence and compliance gaps.
+- `COMPLIANCE-ROADMAP.md`: Phased readiness roadmap that follows SDLC gates; separates urgent applicability checks, DPDP preparation and future architecture work.
 - `OPEN-QUESTIONS.md`: Register of unresolved commercial, legal, and operational decisions.
 - `DECISIONS.md`: Architectural, procedural, and design decisions log.
 - `CHANGELOG.md`: Historical project change log.
