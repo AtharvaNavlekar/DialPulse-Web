@@ -19,7 +19,7 @@ Where implementation, automated test runners, or backend services do not yet exi
 
 ---
 
-## 2. Comprehensive Requirements Traceability Matrix (23 Requirements)
+## 2. Comprehensive Requirements Traceability Matrix (28 Requirements)
 
 | Requirement ID | Requirement | Design Reference | Implementation | Test / Evidence | Release | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -33,14 +33,12 @@ Where implementation, automated test runners, or backend services do not yet exi
 | **SEC-001** | Client-Side Secret and Private Key Isolation | `BRAIN/PUBLIC-CLAIMS-REGISTER.md:AI-001`, `README.md:54` | `.env.example`, `vite.config.ts`, `src/` | Codebase secret grep (0 private keys detected); automated secret scanner in CI: **NOT YET VERIFIED** | Current Build | VERIFIED (Verified Audit) |
 | **SEC-002** | Production CRM Decoupling & External Redirect Boundaries | `README.md:36-58` (`Architectural Decoupling`) | `src/config/navigation.ts`, `src/components/layout/Navbar.tsx` | External link inspection (`app.dialpulse.com/login`); network tab inspection confirms zero direct CRM DB queries | Current Build | VERIFIED (Verified Audit) |
 | **SEC-003** | Automated CI/CD Secret Scanning Gate | `BRAIN/SDLC-TEST-PLAN.md:2.9`, `BRAIN/RISK-REGISTER.md:RSK-007` | *Pending CI Workflow Hook* | Pre-commit secret scan: **NOT YET VERIFIED** | Roadmap | PLANNED (Tooling Roadmap) |
-
 | **SEC-004** | Incident Response, Log Readiness and Reporting Applicability | CERT-In Directions; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md` | `BRAIN/COMPLIANCE-ROADMAP.md`; actual production log configuration pending | Incident tabletop, log-source/region evidence and applicable reporting decision: **NOT YET VERIFIED** | Compliance Roadmap | BLOCKED (Deployment evidence / scope decision pending) |
 | **PRIV-001** | Local Consent State Preservation & Zero Third-Party Trackers | `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md:94-98`, `BRAIN/PUBLIC-CLAIMS-REGISTER.md:LEG-001` | `src/components/common/CookieConsentBanner.tsx`, `src/pages/Cookies.tsx` | Browser network audit (0 external tracker domains requested); localStorage consent inspection; automated tracker scan: **NOT YET VERIFIED** | Current Build | VERIFIED (Verified Audit) |
 | **PRIV-002** | Pre-Publication Disclaimers on Legal & Regulatory Policies | `BRAIN/OPEN-QUESTIONS.md`, `BRAIN/PUBLIC-CLAIMS-REGISTER.md:LEG-005` | `src/pages/Privacy.tsx`, `src/pages/Terms.tsx`, `src/pages/Refund.tsx`, `src/pages/Cookies.tsx` | Inspection of pre-publication notices and "Pending DPO/Legal Confirmation" badges across `/privacy`, `/terms`, `/refund` | Current Build | IMPLEMENTED (Manual QA) |
 | **PRIV-003** | Substantive Legal Entity & DPO Contact Publishing | `BRAIN/OPEN-QUESTIONS.md:66-70`, `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md:300` | *Pending Corporate Resolution* | Legal entity verification: **NOT YET VERIFIED** | Blocked by Counsel | BLOCKED (Awaiting Legal Counsel) |
 | **PRIV-004** | Automated CRM Data Retention & Purge Policy Integration | `BRAIN/OPEN-QUESTIONS.md:57-61`, `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md:181-196` | *Pending CRM Purge Workers* | Database TTL purge job verification: **NOT YET VERIFIED** | Blocked by Business | BLOCKED (Awaiting Retention Decision) |
 | **PRIV-005** | Contractually Guaranteed Zero AI Model Training Perimeter | `BRAIN/PUBLIC-CLAIMS-REGISTER.md:AI-004`, `BRAIN/OPEN-QUESTIONS.md:52-56` | *Pending Enterprise Terms* | Enterprise Google Cloud BAA/DPA terms: **NOT YET VERIFIED** | Blocked by Counsel | BLOCKED (Awaiting Enterprise Contract) |
-
 | **PRIV-006** | India Legal Applicability and Commencement Tracking | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, official DPDP commencement notifications | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, `BRAIN/COMPLIANCE-ROADMAP.md` | Official source links and dates recorded; entity/product-role applicability and legal sign-off: **NOT YET VERIFIED** | Compliance Roadmap | DRAFT (Legal review pending) |
 | **PRIV-007** | Website-versus-CRM Data Inventory and Purpose Boundary | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, privacy requirements | `src/pages/Contact.tsx`, `src/lib/cookies/cookieConsentStore.ts`, `src/lib/analytics/index.ts` | Source review completed; full production bundle/network, deployed providers and cross-origin data flows: **NOT YET VERIFIED** | Compliance Roadmap | IN PROGRESS |
 | **PRIV-008** | Operational Privacy Request and Grievance Intake | `BRAIN/COMPLIANCE-ROADMAP.md`, `BRAIN/OPEN-QUESTIONS.md` | Contact form is simulated; no operational request API is evidenced | End-to-end request receipt/routing/closure test: **NOT YET VERIFIED** | Blocked by API/ownership | BLOCKED (Not operational) |
@@ -52,7 +50,6 @@ Where implementation, automated test runners, or backend services do not yet exi
 | **OPS-002** | Port 3000 Binding & Cloud Run Container Configuration | `README.md:331-334`, `metadata.json` | `package.json` (`--port=3000 --host=0.0.0.0`), `Dockerfile` | Local dev server binding verification on port 3000; Cloud Run deployment health check: **NOT YET VERIFIED** | Current Build | IMPLEMENTED (Manual QA) |
 | **OPS-003** | Automated Unit Testing Framework (Vitest) | `BRAIN/SDLC-TEST-PLAN.md:2.3`, `BRAIN/RISK-REGISTER.md:RSK-006` | *Pending vitest Package in package.json* | `npm run test:unit` execution: **NOT YET VERIFIED** | Roadmap | PLANNED (Tooling Roadmap) |
 | **OPS-004** | Automated End-to-End Browser Testing Suite (Playwright) | `BRAIN/SDLC-TEST-PLAN.md:2.6`, `BRAIN/RISK-REGISTER.md:RSK-006` | *Pending playwright Package in package.json* | `npm run test:e2e` execution: **NOT YET VERIFIED** | Roadmap | PLANNED (Tooling Roadmap) |
-
 | **OPS-005** | Provider Inventory and Conditional Financial-Sector Applicability | RBI Outsourcing Directions; RBI payment-system data direction; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md` | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, `BRAIN/COMPLIANCE-ROADMAP.md` | Website-vs-CRM vendor list, provider regions/contracts and role-specific applicability: **NOT YET VERIFIED** | Compliance Roadmap | IN PROGRESS |
 
 ---
