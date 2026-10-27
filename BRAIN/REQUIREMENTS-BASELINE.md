@@ -519,21 +519,115 @@ This document establishes the official, authoritative requirements baseline for 
 
 ---
 
+## India Compliance Alignment Addendum (2026-10-27)
+
+These requirements are added under the existing categories and are based on `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`. They are not evidence that the underlying operational controls exist.
+
+### PRIV-006: India Legal Applicability and Commencement Tracking
+- **Requirement ID:** PRIV-006
+- **Title:** India Legal Applicability and Commencement Tracking
+- **Description:** Maintain a dated applicability matrix for Indian data-protection, IT-security and conditional financial-sector requirements, including phased statutory commencement.
+- **Business Reason:** Prevent premature or incorrect compliance claims and ensure upcoming commencement milestones are planned before production release.
+- **User / Actor:** Product Owner, Privacy/Legal Counsel, Systems Architect.
+- **Functional Requirement:** Record the applicable entity/service role, legal instrument, provision, commencement date, in-scope processing, required control, owner and approval/evidence status.
+- **Non-Functional Requirement:** Legal status must be date-stamped and rechecked before a material release and before statutory milestones.
+- **Dependencies:** `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`; official Gazette texts; confirmed legal entity, role and contracts.
+- **Risks:** Misstating obligations in force; applying conditional RBI rules universally; missing a future commencement date.
+- **Acceptance Criteria:**
+  - [ ] Official source links and phased commencement dates are recorded.
+  - [ ] Current-law obligations, future scheduled obligations and voluntary engineering controls are clearly distinguished.
+  - [ ] Legal entity and product-role determinations not yet confirmed remain marked pending.
+- **Source / Reference:** G.S.R. 843(E), 13 Nov 2025; G.S.R. 846(E), 13 Nov 2025; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`.
+- **Status:** DRAFT (Legal applicability review pending).
+
+### PRIV-007: Website-versus-CRM Data Inventory and Purpose Boundary
+- **Requirement ID:** PRIV-007
+- **Title:** Website-versus-CRM Data Inventory and Purpose Boundary
+- **Description:** Maintain separate data inventories for the public website and authenticated CRM, then identify each collection/storage/transfer point and purpose before matching it to policy wording.
+- **Business Reason:** Avoid describing CRM-only identity/session, customer, call, AI or KYC data as though it were necessarily collected by the public marketing site.
+- **User / Actor:** Privacy/Legal Counsel, Product Owner, Systems Architect.
+- **Functional Requirement:** Inventory website form inputs, browser storage, production scripts/network destinations, hosting logs, future intake payloads and the distinct CRM data categories.
+- **Non-Functional Requirement:** Data collection must be minimized; no KYC, bank statement, credentials or financial documents should be solicited through the public contact form.
+- **Dependencies:** Actual production network/bundle audit; deployment configuration; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`.
+- **Risks:** Inaccurate notices, sensitive data oversharing, unlisted vendors and cross-product disclosure confusion.
+- **Acceptance Criteria:**
+  - [ ] The five rendered contact fields and the unstructured message field are recorded.
+  - [ ] Local-storage behavior and the actual production analytics/tag inventory are evidenced.
+  - [ ] Website and CRM origins, storage, authentication and provider flows are documented separately.
+  - [ ] Policy copy is reconciled only after the evidence review.
+- **Source / Reference:** `src/pages/Contact.tsx`, `src/lib/cookies/cookieConsentStore.ts`, `src/lib/analytics/index.ts`, `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`.
+- **Status:** IN PROGRESS (Documentation baseline established; production verification and disclosure reconciliation pending).
+
+### PRIV-008: Operational Privacy Request and Grievance Intake
+- **Requirement ID:** PRIV-008
+- **Title:** Operational Privacy Request and Grievance Intake
+- **Description:** Provide a monitored, traceable way to receive and manage appropriate privacy, correction, deletion and grievance requests for the website and any supported product scope.
+- **Business Reason:** A link to a simulated contact form does not establish an operational request-handling process.
+- **User / Actor:** Website Visitor, Privacy/Legal Owner, Support/Operations.
+- **Functional Requirement:** Requests must have an accountable owner, receipt/status evidence, appropriate identity verification, routing, resolution record and a documented escalation path.
+- **Non-Functional Requirement:** Do not promise a request was received, completed or deleted unless the operational workflow confirms it.
+- **Dependencies:** Approved privacy contact, actual request API/monitored inbox or service desk, retention/deletion design and legal review.
+- **Risks:** Lost requests; unsupported public representations; inability to evidence handling.
+- **Acceptance Criteria:**
+  - [ ] The published request channel is monitored and tested.
+  - [ ] Receipt, routing and closure are traceable.
+  - [ ] Request and deletion representations match actual capability and approved policy.
+- **Source / Reference:** `src/pages/Contact.tsx`, `BRAIN/OPEN-QUESTIONS.md`, `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`.
+- **Status:** BLOCKED (Contact form backend and official contact ownership unresolved).
+
+### SEC-004: Incident Response, Log Readiness and Reporting Applicability
+- **Requirement ID:** SEC-004
+- **Title:** Incident Response, Log Readiness and Reporting Applicability
+- **Description:** Establish evidence-backed incident response, relevant ICT log availability/location, escalation ownership and a decision process for applicable statutory/contractual reporting.
+- **Business Reason:** Documentation alone cannot establish incident detection, log access, evidence preservation or time-bound reporting readiness.
+- **User / Actor:** Security/Operations Owner, Systems Architect, Legal Counsel.
+- **Functional Requirement:** Inventory relevant systems/log sources; define triage, containment, evidence preservation, escalation and reporting decision steps; verify actual deployment and provider log locations.
+- **Non-Functional Requirement:** Reporting deadlines and log-retention/location rules must be based on current authoritative instruments and confirmed entity/system scope.
+- **Dependencies:** Production topology, cloud/CDN/WAF/logging configuration, designated incident owner and counsel applicability determination.
+- **Risks:** Missed reporting window, unavailable evidence, unsupported assertion of CERT-In readiness or data locality.
+- **Acceptance Criteria:**
+  - [ ] Actual hosting and applicable entity/system scope are recorded.
+  - [ ] Log source, availability, retention and region are evidenced.
+  - [ ] Incident runbook and reporting decision tree are reviewed and exercised.
+- **Source / Reference:** CERT-In Directions dated 28 Apr 2022; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`; `BRAIN/COMPLIANCE-ROADMAP.md`.
+- **Status:** BLOCKED (Production topology/log evidence and applicability sign-off not yet verified).
+
+### OPS-005: Provider Inventory and Conditional Financial-Sector Applicability
+- **Requirement ID:** OPS-005
+- **Title:** Provider Inventory and Conditional Financial-Sector Applicability
+- **Description:** Keep a current inventory of website vendors and future intake/CRM integration providers, while assessing financial-sector obligations per customer, contract and actual service role.
+- **Business Reason:** Avoid undocumented provider data transfers and avoid treating RBI payment-system or digital-lending rules as universal requirements for every website/CRM deployment.
+- **User / Actor:** Product Owner, Procurement/Vendor Owner, Systems Architect, Legal Counsel.
+- **Functional Requirement:** Record vendor/service, purpose, data categories, processing/storage regions, subprocessor chain, contract/DPA status, incident terms, approval owner and applicable client flow-downs.
+- **Non-Functional Requirement:** No public provider, residency or contractual guarantee may be published without current evidence.
+- **Dependencies:** Production deployment inventory, approved vendors/contracts and role-specific legal analysis.
+- **Risks:** Missing/incorrect subprocessor disclosure, cross-border transfer surprise, unsupported financial-sector claims.
+- **Acceptance Criteria:**
+  - [ ] Website providers are separated from CRM providers.
+  - [ ] Provider locations/contracts remain marked TO BE CONFIRMED until evidenced.
+  - [ ] RBI applicability is decided per role/arrangement; payment-system localization is not represented as universal.
+- **Source / Reference:** RBI Outsourcing of IT Services Directions, 2023; RBI Storage of Payment System Data direction; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`.
+- **Status:** IN PROGRESS (Initial inventory and conditional applicability map documented; vendor/legal confirmation pending).
+
+---
+
 ## 4. Requirements Baseline Summary Metrics
 
-- **Total Documented Requirements:** 23
+- **Total Documented Requirements:** 28
   - **Functional Requirements:** 5 (`FR-001` through `FR-005`)
   - **Non-Functional Requirements:** 2 (`NFR-001`, `NFR-002`)
-  - **Security Requirements:** 3 (`SEC-001`, `SEC-002`, `SEC-003`)
-  - **Privacy Requirements:** 5 (`PRIV-001` through `PRIV-005`)
+  - **Security Requirements:** 4 (`SEC-001` through `SEC-004`)
+  - **Privacy Requirements:** 8 (`PRIV-001` through `PRIV-008`)
   - **UX / Accessibility Requirements:** 2 (`UX-001`, `UX-002`)
   - **SEO Requirements:** 2 (`SEO-001`, `SEO-002`)
-  - **Operations Requirements:** 4 (`OPS-001` through `OPS-004`)
+  - **Operations Requirements:** 5 (`OPS-001` through `OPS-005`)
 
 - **Requirements by Current Status:**
   - **VERIFIED (Automated or Verified Audit):** 4 (`NFR-001`, `SEC-001`, `SEC-002`, `OPS-001`)
-  - **IMPLEMENTED (Manual QA Verified):** 9 (`FR-002`, `FR-003`, `FR-004`, `NFR-002`, `PRIV-001`, `PRIV-002`, `UX-001`, `UX-002`, `SEO-001`, `OPS-002`)
+  - **IMPLEMENTED (Manual QA Verified):** 10 (`FR-002`, `FR-003`, `FR-004`, `NFR-002`, `PRIV-001`, `PRIV-002`, `UX-001`, `UX-002`, `SEO-001`, `OPS-002`)
   - **IMPLEMENTED (Simulated / Pending Backend):** 1 (`FR-001`)
-  - **BLOCKED (External Legal / Business / Backend Dependency):** 4 (`FR-005`, `PRIV-003`, `PRIV-004`, `PRIV-005`)
+  - **BLOCKED (External Legal / Business / Backend Dependency):** 6 (`FR-005`, `PRIV-003`, `PRIV-004`, `PRIV-005`, `PRIV-008`, `SEC-004`)
   - **PLANNED (Tooling / Automation Roadmap):** 4 (`SEC-003`, `SEO-002`, `OPS-003`, `OPS-004`)
-  - **DRAFT / DEPRECATED:** 0
+  - **IN PROGRESS (Evidence / Inventory Required):** 2 (`PRIV-007`, `OPS-005`)
+  - **DRAFT (Legal Applicability Approval Pending):** 1 (`PRIV-006`)
+  - **DEPRECATED:** 0
