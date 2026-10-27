@@ -400,4 +400,43 @@ To protect DialPulse from regulatory enforcement, deceptive marketing claims, an
 ### NEXT REQUIRED ACTION
 1. Transmit this requirements document (`BRAIN/PRIVACY-POLICY-REQUIREMENTS.md`) to executive leadership to resolve the **Required Business Decisions** (legal entity, retention periods, privacy contact).
 2. Transmit this document to external legal counsel / DPO to review the **Required Legal Review Checklist** (subprocessor DPAs, AI terms, audit log erasure paradox, statutory telecom disclaimers).
-3. **DO NOT** create the public `/privacy` route or publish customer-facing legal policy text until business decisions and legal review are formally completed.
+3. The public `/privacy` route currently exists as a pre-publication draft. Do not mark it final or remove draft indicators until the required business decisions, implementation facts and legal review are formally completed.
+
+
+## 16. India Legal Status and DialPulse-Web Scope Update (2026-10-27)
+
+This dated addendum supplements older sections of this internal requirements specification. It does not constitute legal advice and does not establish that a statutory provision applies to every DialPulse service.
+
+### 16.1 DPDP phased commencement
+
+- The official DPDP Act commencement notification G.S.R. 843(E) dated 13 November 2025 schedules section 6(9) and section 27(1)(d) for one year after publication (13 November 2026), and the major tranche including sections 3–17 and the other listed provisions for eighteen months after publication (13 May 2027).
+- The DPDP Rules, 2025 notification G.S.R. 846(E) schedules Rules 1, 2 and 17–21 from publication; Rule 4 after one year (13 November 2026); and Rules 3, 5–16, 22 and 23 after eighteen months (13 May 2027).
+- Rule 4 is about Consent Managers. It is not automatically a registration requirement for an ordinary website cookie-consent banner; determine whether DialPulse’s actual service falls within the statutory role.
+- Review the MeitY official listing and the December 2025 corrigendum before formal sign-off. Recheck official consolidated text and any later amendments before release.
+
+Official references:
+- Act commencement notification: https://egazette.gov.in/WriteReadData/2025/267647.pdf
+- Rules, 2025: https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
+- MeitY Acts and Policies / Rules and corrigendum listing: https://www.meity.gov.in/documents/act-and-policies
+
+### 16.2 Current-law and conditional framework
+
+- Continue to assess the IT Act, 2000 and SPDI Rules, 2011 as applicable during the phased transition. Do not assume DPDP Act section 44(2) has already taken effect before its scheduled commencement.
+- CERT-In Directions dated 28 April 2022 include a six-hour reporting requirement for specified cyber incidents within scope. The operating entity, affected systems, incident types, log sources, applicable log retention/location requirements and escalation process must be verified; a written checklist alone is not operational evidence.
+- RBI Outsourcing of IT Services Directions apply to specified RBI-regulated entities and their relevant outsourcing arrangements. RBI’s payment-system data-storage direction applies to payment-system providers within scope; it is not a universal localization rule for every CRM or marketing site. Digital-lending requirements need service/contract/role-specific legal assessment.
+- Where a customer is a bank/NBFC or other regulated entity, supplier controls may be included contractually. That does not mean every RBI obligation directly applies to the website in the same manner.
+
+### 16.3 Website vs CRM separation
+
+- The public site is a React/Vite SPA. The reviewed `src/pages/Contact.tsx` uses a simulated `setTimeout` success state and does not demonstrate a network request or persistent intake.
+- The reviewed `src/lib/cookies/cookieConsentStore.ts` stores `dialpulse_cookie_consent_v1` in localStorage. The reviewed `src/lib/analytics/index.ts` logs events only when not in production and does not wire a production analytics provider.
+- This source inspection does not prove the complete production network or hosting configuration. A production bundle/network review is still required before a site-wide “zero trackers” or provider claim is approved.
+- Keep website-collected/entered data distinct from CRM account, session, call, message, AI and any financial/KYC data. The contact form has free-text input; future API design should minimize collection and clearly discourage KYC documents, bank statements, passwords or sensitive financial information in the public inquiry message.
+- A link from the privacy page to the current contact form is not a fully operational privacy request channel while the form backend and official request ownership are unresolved.
+
+### 16.4 Required update to compliance status
+
+The new source of truth for the current assessment is `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`; the phased implementation plan is `BRAIN/COMPLIANCE-ROADMAP.md`. Treat them as internal status/roadmap documents, not as evidence that controls are implemented.
+
+The unresolved legal entity, privacy contact/DPO, retention schedule, provider agreements, actual hosting/log locations, request handling, and incident-response readiness remain **BLOCKED / TO BE CONFIRMED** until evidence and approvals are recorded.
+
