@@ -33,11 +33,17 @@ Where implementation, automated test runners, or backend services do not yet exi
 | **SEC-001** | Client-Side Secret and Private Key Isolation | `BRAIN/PUBLIC-CLAIMS-REGISTER.md:AI-001`, `README.md:54` | `.env.example`, `vite.config.ts`, `src/` | Codebase secret grep (0 private keys detected); automated secret scanner in CI: **NOT YET VERIFIED** | Current Build | VERIFIED (Verified Audit) |
 | **SEC-002** | Production CRM Decoupling & External Redirect Boundaries | `README.md:36-58` (`Architectural Decoupling`) | `src/config/navigation.ts`, `src/components/layout/Navbar.tsx` | External link inspection (`app.dialpulse.com/login`); network tab inspection confirms zero direct CRM DB queries | Current Build | VERIFIED (Verified Audit) |
 | **SEC-003** | Automated CI/CD Secret Scanning Gate | `BRAIN/SDLC-TEST-PLAN.md:2.9`, `BRAIN/RISK-REGISTER.md:RSK-007` | *Pending CI Workflow Hook* | Pre-commit secret scan: **NOT YET VERIFIED** | Roadmap | PLANNED (Tooling Roadmap) |
+
+| **SEC-004** | Incident Response, Log Readiness and Reporting Applicability | CERT-In Directions; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md` | `BRAIN/COMPLIANCE-ROADMAP.md`; actual production log configuration pending | Incident tabletop, log-source/region evidence and applicable reporting decision: **NOT YET VERIFIED** | Compliance Roadmap | BLOCKED (Deployment evidence / scope decision pending) |
 | **PRIV-001** | Local Consent State Preservation & Zero Third-Party Trackers | `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md:94-98`, `BRAIN/PUBLIC-CLAIMS-REGISTER.md:LEG-001` | `src/components/common/CookieConsentBanner.tsx`, `src/pages/Cookies.tsx` | Browser network audit (0 external tracker domains requested); localStorage consent inspection; automated tracker scan: **NOT YET VERIFIED** | Current Build | VERIFIED (Verified Audit) |
 | **PRIV-002** | Pre-Publication Disclaimers on Legal & Regulatory Policies | `BRAIN/OPEN-QUESTIONS.md`, `BRAIN/PUBLIC-CLAIMS-REGISTER.md:LEG-005` | `src/pages/Privacy.tsx`, `src/pages/Terms.tsx`, `src/pages/Refund.tsx`, `src/pages/Cookies.tsx` | Inspection of pre-publication notices and "Pending DPO/Legal Confirmation" badges across `/privacy`, `/terms`, `/refund` | Current Build | IMPLEMENTED (Manual QA) |
 | **PRIV-003** | Substantive Legal Entity & DPO Contact Publishing | `BRAIN/OPEN-QUESTIONS.md:66-70`, `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md:300` | *Pending Corporate Resolution* | Legal entity verification: **NOT YET VERIFIED** | Blocked by Counsel | BLOCKED (Awaiting Legal Counsel) |
 | **PRIV-004** | Automated CRM Data Retention & Purge Policy Integration | `BRAIN/OPEN-QUESTIONS.md:57-61`, `BRAIN/PRIVACY-POLICY-REQUIREMENTS.md:181-196` | *Pending CRM Purge Workers* | Database TTL purge job verification: **NOT YET VERIFIED** | Blocked by Business | BLOCKED (Awaiting Retention Decision) |
 | **PRIV-005** | Contractually Guaranteed Zero AI Model Training Perimeter | `BRAIN/PUBLIC-CLAIMS-REGISTER.md:AI-004`, `BRAIN/OPEN-QUESTIONS.md:52-56` | *Pending Enterprise Terms* | Enterprise Google Cloud BAA/DPA terms: **NOT YET VERIFIED** | Blocked by Counsel | BLOCKED (Awaiting Enterprise Contract) |
+
+| **PRIV-006** | India Legal Applicability and Commencement Tracking | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, official DPDP commencement notifications | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, `BRAIN/COMPLIANCE-ROADMAP.md` | Official source links and dates recorded; entity/product-role applicability and legal sign-off: **NOT YET VERIFIED** | Compliance Roadmap | DRAFT (Legal review pending) |
+| **PRIV-007** | Website-versus-CRM Data Inventory and Purpose Boundary | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, privacy requirements | `src/pages/Contact.tsx`, `src/lib/cookies/cookieConsentStore.ts`, `src/lib/analytics/index.ts` | Source review completed; full production bundle/network, deployed providers and cross-origin data flows: **NOT YET VERIFIED** | Compliance Roadmap | IN PROGRESS |
+| **PRIV-008** | Operational Privacy Request and Grievance Intake | `BRAIN/COMPLIANCE-ROADMAP.md`, `BRAIN/OPEN-QUESTIONS.md` | Contact form is simulated; no operational request API is evidenced | End-to-end request receipt/routing/closure test: **NOT YET VERIFIED** | Blocked by API/ownership | BLOCKED (Not operational) |
 | **UX-001** | Material Design 3 Floating Navbar Architecture | `BRAIN/DESIGN-DNA.md`, `README.md:210-240` | `src/components/layout/Navbar.tsx`, `src/components/layout/DesktopDropdown.tsx` | Visual scroll anchoring inspection; desktop mega-menu unclipped render test; mobile drawer gesture check | Current Build | IMPLEMENTED (Manual QA) |
 | **UX-002** | Multi-Layer Editorial Footer with Mobile Accordions | `README.md:241-262`, `BRAIN/DESIGN-DNA.md` | `src/components/layout/Footer.tsx`, `src/components/layout/FooterCTA.tsx` | Desktop 5-column directory inspection; mobile viewport (< 1024px) accordion collapse check | Current Build | IMPLEMENTED (Manual QA) |
 | **SEO-001** | Dynamic Page Title, Meta Description & Canonical Sync | `README.md:347`, `src/lib/seo/useSEO.ts` | `src/lib/seo/useSEO.ts`, all `src/pages/*.tsx` | DOM `<head>` inspection across `/`, `/product`, `/pricing`, `/security`; automated OpenGraph validator: **NOT YET VERIFIED** | Current Build | IMPLEMENTED (Manual QA) |
@@ -47,30 +53,28 @@ Where implementation, automated test runners, or backend services do not yet exi
 | **OPS-003** | Automated Unit Testing Framework (Vitest) | `BRAIN/SDLC-TEST-PLAN.md:2.3`, `BRAIN/RISK-REGISTER.md:RSK-006` | *Pending vitest Package in package.json* | `npm run test:unit` execution: **NOT YET VERIFIED** | Roadmap | PLANNED (Tooling Roadmap) |
 | **OPS-004** | Automated End-to-End Browser Testing Suite (Playwright) | `BRAIN/SDLC-TEST-PLAN.md:2.6`, `BRAIN/RISK-REGISTER.md:RSK-006` | *Pending playwright Package in package.json* | `npm run test:e2e` execution: **NOT YET VERIFIED** | Roadmap | PLANNED (Tooling Roadmap) |
 
+| **OPS-005** | Provider Inventory and Conditional Financial-Sector Applicability | RBI Outsourcing Directions; RBI payment-system data direction; `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md` | `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`, `BRAIN/COMPLIANCE-ROADMAP.md` | Website-vs-CRM vendor list, provider regions/contracts and role-specific applicability: **NOT YET VERIFIED** | Compliance Roadmap | IN PROGRESS |
+
 ---
 
 ## 3. Reconciled Verification Coverage Summary
 
-- **Total Requirements Tracked:** 23 (100% reconciled with `BRAIN/REQUIREMENTS-BASELINE.md`)
+- **Total Requirements Tracked:** 28 (all requirements in `BRAIN/REQUIREMENTS-BASELINE.md` represented)
 - **VERIFIED Requirements (Automated / Verified Audit):** 4
-  - Fully automated commands (`npm run lint`, `npm run build`): 2 (`NFR-001`, `OPS-001`)
-  - Verified manual security & privacy audits: 2 (`SEC-001`, `SEC-002`, `PRIV-001`)
-- **IMPLEMENTED Requirements (Manual QA Verified):** 9
-  - `FR-002`, `FR-003`, `FR-004`, `NFR-002`, `PRIV-002`, `UX-001`, `UX-002`, `SEO-001`, `OPS-002`
-- **IMPLEMENTED Requirements (Simulated Client State):** 1
-  - `FR-001` (Contact Form Webhook pending)
-- **BLOCKED Requirements (External Legal, Business, or Backend Dependencies):** 4
-  - `FR-005` (Blocked by CRM Backend Webhook)
-  - `PRIV-003` (Blocked by Corporate Legal Entity & DPO Resolution)
-  - `PRIV-004` (Blocked by Executive Data Retention Decision)
-  - `PRIV-005` (Blocked by Google Cloud Enterprise Contract Terms)
-- **PLANNED Requirements (Tooling / Testing Automation Roadmap):** 4
-  - `SEC-003` (Automated CI Secret Scanning)
-  - `SEO-002` (Automated Link / OG Crawler)
-  - `OPS-003` (Automated Vitest Runner)
-  - `OPS-004` (Automated Playwright Suite)
-
----
+  - `NFR-001`, `SEC-001`, `SEC-002`, `OPS-001`
+- **IMPLEMENTED Requirements (Manual QA):** 10
+  - `FR-002`, `FR-003`, `FR-004`, `NFR-002`, `PRIV-001`, `PRIV-002`, `UX-001`, `UX-002`, `SEO-001`, `OPS-002`
+- **IMPLEMENTED (Simulated Client State):** 1
+  - `FR-001` (contact form still does not demonstrate API delivery)
+- **BLOCKED Requirements:** 6
+  - `FR-005`, `PRIV-003`, `PRIV-004`, `PRIV-005`, `PRIV-008`, `SEC-004`
+- **PLANNED Tooling Requirements:** 4
+  - `SEC-003`, `SEO-002`, `OPS-003`, `OPS-004`
+- **IN PROGRESS / Evidence Inventory:** 2
+  - `PRIV-007`, `OPS-005`
+- **DRAFT / Legal Applicability Review:** 1
+  - `PRIV-006`
+- A requirement in a governance document is not evidence that its corresponding operational control is deployed. The production network, actual hosting/log locations and role-specific applicability decisions remain unverified.
 
 ## 4. Traceability Maintenance Protocol
 
