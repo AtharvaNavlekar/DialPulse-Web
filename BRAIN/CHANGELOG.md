@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026-10-27] - India Data Protection & IT Compliance Alignment (Audit / Roadmap Only)
+- **Compliance applicability audit (`BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`)**: Recorded the public website's evidence-backed current status, separated it from the authenticated CRM, mapped DPDP Act/Rules' phased commencement, and documented conditional IT/SPDI, CERT-In and RBI applicability without treating guidance as universal law.
+- **Readiness roadmap (`BRAIN/COMPLIANCE-ROADMAP.md`)**: Established prioritized work for the 13 November 2026 scheduled tranche, preparation for 13 May 2027, and target contact-intake/CMS/analytics architecture behind SDLC gates.
+- **Requirements and traceability**: Added PRIV-006 through PRIV-008, SEC-004 and OPS-005 to `BRAIN/REQUIREMENTS-BASELINE.md` and `BRAIN/SDLC-TRACEABILITY.md`, with legal/production evidence gaps explicitly marked.
+- **Risk/open-question updates**: Added RSK-011 through RSK-014 and recorded the pending legal-role, hosting/log, data-boundary, request-intake and vendor decisions.
+- **Current implementation limitations**: The contact form remains simulated; no API/persistence was added. The reviewed analytics helper has no production provider integration. No public legal policy or application code was changed.
+- **Verification limitation**: This documentation-only update was performed through the remote GitHub repository tooling; `npm run lint` and `npm run build` were not executed in a local project checkout during this change.
+
+
 ## [2026-10-04] - SDLC-02: Current Project Requirements Baseline
 - **Authoritative Requirements Baseline (`BRAIN/REQUIREMENTS-BASELINE.md`)**: Established the canonical project requirements baseline defining 23 structured requirements across 7 categories (5 Functional, 2 Non-Functional, 3 Security, 5 Privacy, 2 UX/Accessibility, 2 SEO, 4 Operations). Every requirement adheres to the mandatory 12-field specification template.
 - **Explicit Status Discipline**: Classified each requirement into standardized governance states: 4 Verified (automated/audit), 9 Implemented (manual QA), 1 Implemented (simulated contact form), 4 Blocked (pending external legal entity, retention schedule, AI contract, or CRM webhook), and 4 Planned (Vitest, Playwright, secret scan, SEO crawler).
