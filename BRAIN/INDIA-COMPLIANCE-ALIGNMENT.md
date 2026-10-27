@@ -84,7 +84,7 @@ The IT Act/SPDI framework must remain in the applicability analysis during the p
 
 ### 3.4 CERT-In Directions
 
-CERT-In’s 28 April 2022 directions include a six-hour reporting requirement for specified cyber incidents, including data breaches/leaks, for entities and incidents within scope. They also address ICT-system logs and other security practices. The project must establish the actual operating entity, applicable role, incident owner, log sources, log availability/location and escalation playbook. Do not mark the website compliant with CERT-In merely because the rules are documented. Legal/technical review must confirm applicability to the responsible entity and actual hosting architecture.
+CERT-In’s 28 April 2022 directions include a six-hour reporting requirement for specified cyber incidents, including data breaches/leaks, for entities and incidents within scope. They also require entities within scope to enable ICT-system logs and maintain them securely for a rolling period of 180 days within Indian jurisdiction. The project must establish the actual operating entity, applicable role, incident owner, log sources, log availability/location and escalation playbook. Do not mark the website compliant with CERT-In merely because the rules are documented. Legal/technical review must confirm applicability to the responsible entity and actual hosting architecture.
 
 ### 3.5 RBI requirements — conditional by regulated role and service
 
