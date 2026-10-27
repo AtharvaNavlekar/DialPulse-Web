@@ -330,7 +330,7 @@ Legal counsel must review and approve the following legal questions:
 
 ## 15. Required Website Inputs (Before Publishing `/privacy`)
 
-The marketing website must NOT publish a `/privacy` route until the following concrete inputs are verified:
+The `/privacy` route currently exists as a pre-publication draft. It must not be represented as final or have its draft notices removed until the following concrete inputs are verified:
 
 1. **Full Legal Corporate Entity Name** (e.g., *"DialPulse Technologies Private Limited"* or *"DialPulse Inc."*).
 2. **Physical Registered Corporate Address**.
@@ -422,7 +422,7 @@ Official references:
 ### 16.2 Current-law and conditional framework
 
 - Continue to assess the IT Act, 2000 and SPDI Rules, 2011 as applicable during the phased transition. Do not assume DPDP Act section 44(2) has already taken effect before its scheduled commencement.
-- CERT-In Directions dated 28 April 2022 include a six-hour reporting requirement for specified cyber incidents within scope. The operating entity, affected systems, incident types, log sources, applicable log retention/location requirements and escalation process must be verified; a written checklist alone is not operational evidence.
+- CERT-In Directions dated 28 April 2022 include a six-hour reporting requirement for specified cyber incidents within scope. They also require entities within their scope to enable ICT-system logs and retain them securely for a rolling 180 days within Indian jurisdiction, with logs made available as directed. The operating entity, affected systems, log sources, region and escalation process must be verified; a written checklist alone is not operational evidence.
 - RBI Outsourcing of IT Services Directions apply to specified RBI-regulated entities and their relevant outsourcing arrangements. RBI’s payment-system data-storage direction applies to payment-system providers within scope; it is not a universal localization rule for every CRM or marketing site. Digital-lending requirements need service/contract/role-specific legal assessment.
 - Where a customer is a bank/NBFC or other regulated entity, supplier controls may be included contractually. That does not mean every RBI obligation directly applies to the website in the same manner.
 
