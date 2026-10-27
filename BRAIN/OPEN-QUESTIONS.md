@@ -106,3 +106,37 @@ This document tracks unresolved business decisions, legal determinations, and co
 15. **Regional Voice Dialect & Language Coverage in AI Transcripts**:
     - Which spoken languages and regional accents are officially verified for automated call transcription and bullet-point extraction (e.g., English, Hindi, Hinglish, regional dialects)?
     - *Current Status*: English is the primary baseline; multilingual capabilities depend on underlying tenant-configured speech models and require evaluation during architecture onboarding.
+
+
+## 6. India Compliance Alignment (Added 2026-10-27)
+
+20. **India Legal Applicability and DPDP Commencement**:
+    - What is the precise legal entity and operating role for DialPulse-Web and the separate CRM (including whether any service is provided as a processor, LSP, DLA, payment-system provider or other regulated role)?
+    - Does any DialPulse service fit the statutory DPDP Consent Manager role, distinct from an ordinary website cookie-preference banner?
+    - *Current Status*: Official DPDP commencement notifications are mapped in `BRAIN/INDIA-COMPLIANCE-ALIGNMENT.md`; role-specific legal determination is pending. The next scheduled tranche is 13 November 2026, and the major tranche is 13 May 2027.
+
+21. **Production Hosting, Logs and CERT-In Readiness**:
+    - What are the actual production regions for origin, CDN/WAF, access/security logs, error reporting, backups and provider telemetry?
+    - Who is the incident owner and how will the team preserve evidence, assess applicability, escalate and report qualifying incidents in applicable timeframes?
+    - *Current Status*: Internal architecture documentation mentions `asia-southeast1`, but actual production topology/log regions and a tested incident playbook are not verified.
+
+22. **Website vs CRM Data Inventory and Privacy Disclosures**:
+    - Which storage keys, cookies, network destinations and data flows exist on `dialpulse.com` versus `app.dialpulse.com`?
+    - Do privacy/cookie disclosures currently imply CRM authentication/session storage or other CRM-only activity occurs on the public website?
+    - *Current Status*: Source inspection confirms the public contact form fields, consent localStorage key and a development-console-only analytics helper. Full production bundle/network audit and policy reconciliation remain outstanding.
+
+23. **Public Contact Form and Privacy Request Intake**:
+    - Which monitored system or API should receive sales/demo and privacy/grievance requests, and who owns triage and resolution?
+    - Should the form explicitly warn visitors not to submit KYC documents, bank statements, passwords or other sensitive financial information?
+    - *Current Status*: `src/pages/Contact.tsx` simulates success with a timeout; it does not show network submission or durable persistence. A monitored request process is not evidenced.
+
+24. **Website/CRM Vendor, Subprocessor and Data Location Register**:
+    - Which providers are actually active for the public site today (hosting, CDN/WAF, fonts/assets, analytics, forms, monitoring) and which are CRM-only?
+    - What are the relevant data regions, contract/DPA status, subprocessors, retention and incident terms?
+    - *Current Status*: Existing CRM architectural documentation is not a complete, verified live vendor register for the public website.
+
+25. **Conditional RBI / Financial-Services Applicability**:
+    - For each financial-services customer/contract, is DialPulse acting only as a software supplier or performing an activity that places it within specific regulated arrangements or contractual flow-downs?
+    - Do any arrangements involve a covered RBI-regulated entity, LSP/DLA activity or payment-system provider?
+    - *Current Status*: Applicability is conditional and not confirmed for the public website. Do not apply India payment-system data localization or digital-lending requirements universally without legal scope analysis.
+
